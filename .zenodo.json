@@ -1,0 +1,38 @@
+{
+  "creators": [
+    {
+      "affiliation": "Earth Lab, University of Colorado - Boulder",
+      "name": "Palomino, Jenny",
+      "orcid": "0000-0003-4879-9299"
+    },
+    {
+      "affiliation": "Earth Lab, University of Colorado - Boulder",
+      "name": "Wasser, Leah",
+      "orcid": "0000-0002-8177-6550"
+    },
+    {
+      "affiliation": "Earth Lab, University of Colorado - Boulder",
+      "name": "Joseph, Max",
+      "orcid": "0000-0002-7745-9990"
+    }
+  ],
+  "contributors": [
+    {
+      "type":"Other",
+      "affiliation": "DigitalGlobe",
+      "name": "Morrissey, Martha",
+      "orcid": "0000-0002-5406-171X"
+    },
+    {
+      "type":"Other",
+      "affiliation": "Earth Lab, University of Colorado - Boulder",
+      "name": "Norris, Will"
+    }
+  ],
+  "keywords": [
+    "data science",
+    "earth data science",
+    "earth analytics"
+  ],
+  "license": "CC-BY-NC-ND-4.0"
+}
