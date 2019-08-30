@@ -1,0 +1,3052 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+
+<meta charset="utf-8">
+
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Introduction to Bash (Shell) and Manipulating Files and Directores at the Command Line | Earth Data Science - Earth Lab </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Earth Data Science - Earth Lab">
+<meta property="og:title" content="Introduction to Bash (Shell) and Manipulating Files and Directores at the Command Line">
+
+
+  <link rel="canonical" href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/">
+  <meta property="og:url" content="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/">
+
+
+
+  <meta content="Bash or Shell is a command line tool that is used in open science to efficiently manipulate files and directories. Learn how to use Bash to manipulate files in support of reproducible science." name="description">
+  <meta property="og:description" content="Bash or Shell is a command line tool that is used in open science to efficiently manipulate files and directories. Learn how to use Bash to manipulate files in support of reproducible science.">
+
+
+<!-- twitter cards -->
+
+  <meta name="twitter:site" content="@earthlabcu">
+  <meta name="twitter:title" content="Introduction to Bash (Shell) and Manipulating Files and Directores at the Command Line">
+  <meta name="twitter:description" content="Bash or Shell is a command line tool that is used in open science to efficiently manipulate files and directories. Learn how to use Bash to manipulate files in support of reproducible science.">
+  <meta name="twitter:url" content="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/">
+
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://earthdatascience.org/images/earth_sm_twit.png">
+    <meta name="twitter:image:alt" content="The Earthlab Logo - image of a globe with courses, lessons and tutorials">
+
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-07-15T00:00:00-06:00">
+  
+    <link rel="next" href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/directories/" title="What is a Working Directory and Other Science Project Management Terms Defined">
+  
+  
+    <link rel="prev" href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/introduction-to-python-conda-environments/" title="Using Python Conda Environments to Create Reproducible Workflows and to Manage Dependencies: Everything That You Need to Know">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Earth Analytics",
+      "url" : "http://localhost:8000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:8000/feed.xml" type="application/atom+xml" rel="alternate" title="Earth Data Science - Earth Lab Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="LfpevjsE0wlELv5KKOZv1T2RhRimGSiRckWv5ZC19GU" />
+<!-- don't use the old cataloged meta tags -->
+<meta name="googlebot" content="noodp">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+
+<!-- For all browsers
+<link rel="stylesheet" href="http://localhost:8000/assets/css/main.css">-->
+<link rel="stylesheet" href="http://localhost:8000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body>
+
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<!-- search bar begin  - turning off for now-->
+
+<div class="search">
+<form role="search" method="get" action="http://localhost:8000/search/">
+    <input id="q" name="q"
+           placeholder="Search earth data science site" type="text">
+</form>
+<!--<span class='cu-boulder'><a href="http://www.colorado.edu/earthlab" target="_blank">Earth Lab University of Colorado - Boulder Home </a></span> -->
+</div>
+
+
+<!-- search bar END -->
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:8000/"><img src="/images/earth_sm.png" alt="Earth Lab - Earth Data Science" style="height:80%;width:85%"></a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/tutorials/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/courses/">Courses</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/workshops/">Workshops</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/tools/">Tools</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/blog/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/events/">Events</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:8000/about/">About</a></li>
+          
+
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+<nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
+ <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+<a href="http://localhost:8000"></a>
+ 
+ <!-- there is an offset of 1 so subtract 2 from the final crumb number-->
+ 
+   
+   
+     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+       <a href="http://localhost:8000/" itemprop="item"><span itemprop="name">Home</span></a>
+       <meta itemprop="position" content="" />
+     </li>
+     <span class="sep">/</span>
+   
+    
+        <li><a href="http://localhost:8000/courses/">Courses </a>
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        <li><a href="http://localhost:8000/courses/intro-to-earth-data-science/">Intro to earth data science </a>
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        <li><a href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/"> Week 1.  Open reproducible science </a>
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        <li class="current">Introduction to Bash (Shell) and Manipulating Files and Directores at the Command Line</li>
+    
+  
+</ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+
+
+    
+
+    
+     <!--  Might be able to delete this This is the code that populates the side bar navigation if there is a class-->
+      
+
+
+
+
+
+<!-- make sure we're only grabbing pages for the course -->
+
+
+
+<!--<h3>Week 1 Lessons</h3>-->
+<!-- i don't think the code below is used as modules is defined lower down as well. -->
+
+<!-- This is how modules are sorted on the left hand side bar -->
+
+
+
+
+
+
+<h5><a href="http://localhost:8000/courses/intro-to-earth-data-science/" ><i class="fa fa-home" aria-hidden="true"></i> Intro-to-earth-data-science Home</a></h5>
+
+<!-- Just get the pages from this course -->
+
+
+
+
+
+
+<nav class="nav__list">
+
+
+
+
+
+
+<ul>
+  <li><span class="nav__sub-title"><i class="fa fa-book" aria-hidden="true"></i> Units</span>
+   <ul>
+    
+
+    <!-- Only list the week if it's not the week for the current landing page -->
+    
+
+
+      
+       
+        <li class='active-section'> <a href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/"><i class="fa fa-folder-open" aria-hidden="true"></i>
+           1. INTRODUCTION TO OPEN REPRODUCIBLE SCIENCE WORKFLOWS</a></li>
+        
+
+<div class='active-menu'>
+      <ul>
+        
+        <!-- Note that class-order allows you to sort modules by class order if there are more than 1 in a class -->
+        
+
+        
+
+        
+
+        
+        
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i> Open reproducible science workflows </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/><!--1.1 --> - About Open Science</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/open-science-tools-git-bash-jupyter/><!--1.2 --> - Open Science Tools</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/best-practices-for-organizing-open-reproducible-science/><!--1.3 --> - Project Management Best Practices</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/introduction-to-python-conda-environments/><!--1.4 --> - Conda Environments</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+        
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i> Use bash to manipulate files </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/ class='active'> <!--1.1 -->- Introduction to Bash</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/directories/><!--1.2 --> - Computer Directories</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/bash-commands-to-manage-directories-files/><!--1.3 --> - Bash Commands</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+        
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i> Jupyter for python </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/><!--1.1 --> - Intro to Jupyter</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/get-started-with-jupyter-notebook-for-python/><!--1.2 --> - Jupyter Notebook For Python</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/code-markdown-cells-in-jupyter-notebook/><!--1.3 --> - Code and Markdown Cells</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/manage-directories-jupyter-dashboard/><!--1.4 --> - Manage Directories Using Dashboard</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/manage-jupyter-notebook-files/><!--1.5 --> - Manage Jupyter Notebooks</a></li>
+          
+          
+
+        
+        
+        
+          
+          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/jupyter-notebook-shortcuts/><!--1.6 --> - Jupyter Notebook Shortcuts</a></li>
+          
+          
+
+        
+       </ul>
+        
+
+        
+      </ul>
+
+      <!-- BEGIN Learn how to lessons -->
+       <ul>
+         
+         
+       </ul>
+
+
+     </div>
+
+
+      <!-- END BEGIN Learn how to lessons -->
+
+      <!--  -->
+      
+
+    
+
+    <!-- Only list the week if it's not the week for the current landing page -->
+    
+    <li> <a href="http://localhost:8000/courses/intro-to-earth-data-science/file-formats/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+       2. File Formats for Earth Data Science</a></li>
+    
+
+
+      
+
+    
+  </ul></li>
+ </ul>
+
+
+ <ul>
+   <li><span class="nav__sub-title"><i class="fa fa-folder-open" aria-hidden="true"></i> Overview</span>
+    <ul>
+     
+          
+         <li> <a href="http://localhost:8000/courses/intro-to-earth-data-science/">
+           Intro to Earth Data Science Home </a></li>
+         
+
+     
+   </ul>
+ </li>
+</ul>
+</nav>
+
+<h5><a href="http://localhost:8000/courses/intro-to-earth-data-science/" ><i class="fa fa-home" aria-hidden="true"></i> intro-to-earth-data-science Home</a></h5>
+
+    
+
+    
+
+  
+  </div>
+
+
+
+
+
+
+<!-- begin science / science themes side bar nav -->
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <meta itemprop="headline" content="Introduction to Bash (Shell) and Manipulating Files and Directores at the Command Line">
+    <meta itemprop="description" content="Bash or Shell is a command line tool that is used in open science to efficiently manipulate files and directories. Learn how to use Bash to manipulate files in support of reproducible science.">
+    <meta itemprop="datePublished" content="July 15, 2019">
+    <meta itemprop="dateModified" content="August 30, 2019">
+
+    <div class="page__inner-wrap">
+      
+
+        <header>
+          <!-- BEGIN: insert a welcome to the module block on pages that are part of a module set -->
+
+          <!-- END: insert welcome block -->
+          <h1 class="page__title" itemprop="headline">
+            Lesson 1. 
+             Introduction to Bash (Shell) and Manipulating Files and Directores at the Command Line
+ </h1>
+            
+          
+
+          
+            <div class="page__meta">
+              
+              
+              <a href="http://localhost:8000/authors/jenny-palomino">Jenny Palomino</a>, 
+              
+              
+              <a href="http://localhost:8000/authors/leah-wasser">Leah Wasser</a>
+              
+            </div>
+          
+
+        <br/>
+
+        
+        <div class="notice--warning header" markdown="1">
+        
+         <h1> <i class="fa fa-6 fa-book" aria-hidden="true"></i> Bash - Intro to earth data science course module</h1>
+        Welcome to the first lesson in the <strong>Bash</strong> module.
+        Bash or Shell is a command line tool that is used in open science to efficiently manipulate files and directories. Learn how to use Bash to access and move files and directories.
+        
+        </div>
+        
+
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <!-- would like to include the TOC automatically but this does weird things-->
+        
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-file-text"></i> In This Chapter</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#chapter-two---introduction-to-bash" id="markdown-toc-chapter-two---introduction-to-bash"><i class="fa fa-ship" aria-hidden="true"></i> Chapter Two - Introduction to Bash</a></li>
+  <li><a href="#what-you-need" id="markdown-toc-what-you-need"><i class="fa fa-check-square-o fa-2" aria-hidden="true"></i> What You Need</a></li>
+  <li><a href="#terminal-shell-and-bash---an-overview" id="markdown-toc-terminal-shell-and-bash---an-overview">Terminal, Shell, and Bash - An Overview</a></li>
+  <li><a href="#why-is-bash-important-for-open-reproducible-science" id="markdown-toc-why-is-bash-important-for-open-reproducible-science">Why Is Bash Important for Open Reproducible Science</a></li>
+  <li><a href="#terminal-options-for-bash" id="markdown-toc-terminal-options-for-bash">Terminal Options For Bash</a></li>
+  <li><a href="#open-a-terminal-session-on-your-computer" id="markdown-toc-open-a-terminal-session-on-your-computer">Open a Terminal Session On Your Computer</a></li>
+  <li><a href="#check-for-bash" id="markdown-toc-check-for-bash">Check For Bash</a></li>
+  <li><a href="#close-a-terminal-session" id="markdown-toc-close-a-terminal-session">Close a Terminal Session</a></li>
+</ul>
+
+  </nav>
+</aside>
+
+<div class="notice--success">
+
+  <h2 id="chapter-two---introduction-to-bash"><i class="fa fa-ship" aria-hidden="true"></i> Chapter Two - Introduction to Bash</h2>
+
+  <p>In this chapter, you will learn how using <code class="highlighter-rouge">Bash</code> can help you implement open reproducible science workflows and get familiar with useful commands for accessing items on your computer.</p>
+
+  <p>After completing this chapter, you will be able to:</p>
+
+  <ul>
+    <li>Explain the roles of <code class="highlighter-rouge">Terminal</code>, <code class="highlighter-rouge">Shell</code>, and <code class="highlighter-rouge">Bash</code> for accessing programs and other items on your computer.</li>
+    <li>Launch a <code class="highlighter-rouge">Terminal</code> session to access <code class="highlighter-rouge">Bash</code>.</li>
+    <li>Run <code class="highlighter-rouge">Bash</code> commands in the terminal to work with files and directories on your computer.</li>
+    <li>Test that <code class="highlighter-rouge">Bash</code> is ready for use on your computer.</li>
+  </ul>
+
+  <h2 id="what-you-need"><i class="fa fa-check-square-o fa-2" aria-hidden="true"></i> What You Need</h2>
+
+  <p>Be sure that you have completed the instructions on <a href="http://localhost:8000/workshops/setup-earth-analytics-python/">Setting up Git, Bash, and Conda on your computer</a> to install the tools for your operating system (Windows, Mac, Linux).</p>
+
+</div>
+
+<h2 id="terminal-shell-and-bash---an-overview">Terminal, Shell, and Bash - An Overview</h2>
+
+<h3 id="terminal">Terminal</h3>
+
+<p>In the early days of computing, the computer that processed data or performed operations was separate from the tool that gave it the instructions to do the processing. There was:</p>
+
+<ul>
+  <li>The terminal: which was used to send commands to the computer and</li>
+  <li>The computer: the hardware that processed the commands</li>
+</ul>
+
+<p>Today, there are computers that can both provide commands AND perform the computation, and these computers have graphical user interfaces (known as GUIs) that make it easy to perform tasks.</p>
+
+<p>However, accessing the command line or terminal can often be more efficient than using GUIs for certain tasks, and you can send commands via the terminal to programmatically accomplish these tasks. For example, working with files in the terminal is faster and more efficient than working with files in a graphic environment like Windows Explorer or the Finder on a MAC.</p>
+
+<p>You can also use the terminal to launch and execute open reproducible science tools such as <code class="highlighter-rouge">Jupyter Notebook</code>, <code class="highlighter-rouge">Python</code>, and <code class="highlighter-rouge">git</code>, which you will use throughout this textbook.</p>
+
+<figure>
+ <a href="http://localhost:8000/images/courses/earth-analytics/python-interface/early-terminal.png">
+ <img src="http://localhost:8000/images/courses/earth-analytics/python-interface/early-terminal.png" alt="An image showing a terminal and a computer in the early days of computing." /></a>
+ <figcaption> Image of an older computer and terminal.</figcaption>
+</figure>
+
+<h3 id="shell-and-bash">Shell and Bash</h3>
+
+<p>In the chapter on Open Reproducible Science, you learned that <code class="highlighter-rouge">Shell</code> is the primary program that computers use to receive code (i.e. commands) and return information produced by executing these commands (i.e. output).</p>
+
+<p>These commands can be entered and executed via the terminal. This allows you to control your computer by typing in commands with a keyboard, instead of using buttons or drop down menus in a GUI with a mouse/keyboard.</p>
+
+<p><code class="highlighter-rouge">Bash</code> (also known as the “Bourne-Again Shell”) is an implementation of <code class="highlighter-rouge">Shell</code> and allows you to efficiently perform many tasks. For example, you can use <code class="highlighter-rouge">Bash</code> to perform operations on multiple files quickly via the command line.</p>
+
+<p>You can also write and execute scripts in <code class="highlighter-rouge">Bash</code>, just like you can in <code class="highlighter-rouge">R</code> or <code class="highlighter-rouge">Python</code>, that can be executed across different operating systems.</p>
+
+<p class="notice--success"><i class="fa fa-star"></i> <strong>Data Tip:</strong><br />
+<code class="highlighter-rouge">Bash</code> stands for “bourne again shell” and is an updated version of <code class="highlighter-rouge">Shell</code>. Sometimes you will hear <code class="highlighter-rouge">Bash</code> and <code class="highlighter-rouge">Shell</code> used interchangeably; this textbook uses the term <code class="highlighter-rouge">Bash</code>.</p>
+
+<h2 id="why-is-bash-important-for-open-reproducible-science">Why Is Bash Important for Open Reproducible Science</h2>
+
+<p>Using <code class="highlighter-rouge">Bash</code> in the Terminal is a powerful way of interacting with your computer. GUIs and command line <code class="highlighter-rouge">Bash</code> are complementary—by knowing both, you will greatly expand the range of tasks you can accomplish with your computer.</p>
+
+<p>With <code class="highlighter-rouge">Bash</code> commands, you will be able to perform many tasks more efficiently and automate and replicate workflows across different operating systems. Common tasks that you can run at the command line include checking your current working directory, changing directories, making a new directory, extracting files, and finding files on your computer.</p>
+
+<p>Working in the terminal with <code class="highlighter-rouge">Bash</code> provides you with the ability to:</p>
+<ul>
+  <li>easily navigate your computer to access and manage files and folders (i.e. directories).</li>
+  <li>quickly and efficiently work with many files and directories at once.</li>
+  <li>run programs that provide more functionality at the command line (e.g. <code class="highlighter-rouge">git</code>).</li>
+  <li>launch programs from specific directories on your computer (e.g. <code class="highlighter-rouge">Jupyter Notebook</code>).</li>
+  <li>use repeatable commands for these tasks across many different operating systems (Windows, Mac, Linux).</li>
+</ul>
+
+<h2 id="terminal-options-for-bash">Terminal Options For Bash</h2>
+
+<p>Previously, you learned that a terminal is the command line interface (CLI) that gives you access to <code class="highlighter-rouge">Bash</code>. There are many different terminal programs, and thus, the terminal that you use on your computer will vary according to your operating system.</p>
+
+<p>For instance, Mac as well as many Linux computers have a default terminal program installed that provides access to <code class="highlighter-rouge">Bash</code>. However, the default terminal on Windows computers does not provide access to <code class="highlighter-rouge">Bash</code>.</p>
+
+<p>For this textbook, Windows users will need to install a customized terminal called <code class="highlighter-rouge">Git Bash</code> to access and run <code class="highlighter-rouge">Bash</code> commands (see section above on What You Need).</p>
+
+<p>Throughout the textbook, the command line environment that you use to access <code class="highlighter-rouge">Bash</code> will be referred to as the terminal.</p>
+
+<h2 id="open-a-terminal-session-on-your-computer">Open a Terminal Session On Your Computer</h2>
+
+<p>The terminal program that you use to run <code class="highlighter-rouge">Bash</code> commands will vary depending upon your computer’s operating system.</p>
+
+<h3 id="mac-os-x">Mac (OS X)</h3>
+
+<p>You can use the program called Terminal, which uses the <code class="highlighter-rouge">Bash</code> implementation of <code class="highlighter-rouge">Shell</code> and is installed natively on the Mac OS.</p>
+
+<p>You can open Terminal by finding and launching it from Spotlight (or from <code class="highlighter-rouge">/Applications/Utilities</code>).</p>
+
+<figure>
+   <a href="http://localhost:8000/images/earth-analytics/bash/mac-terminal.png">
+   <img src="http://localhost:8000/images/earth-analytics/bash/mac-terminal.png" alt="This is what the Terminal on Mac looks like. Source: Apple.com." /></a>
+   <figcaption>This is what the Terminal on Mac looks like. Source: <a href="https://help.apple.com/assets/58C4E5B4680CE2040551BA60/58C4E5B6680CE2040551BA69/en_US/84239026ca019f46567b86e900f5edd7.png" target="_blank">Apple.com.</a>
+   </figcaption>
+</figure>
+
+<h3 id="linux">Linux</h3>
+
+<p>Many Linux computers use the <code class="highlighter-rouge">Bash</code> implementation of <code class="highlighter-rouge">Shell</code>, which you will learn to test for in the section below.</p>
+
+<p>You can open the program called <code class="highlighter-rouge">Terminal</code> (or <code class="highlighter-rouge">Terminal Emulator</code>) by finding and launching it from your list of programs.</p>
+
+<figure>
+ <a href="http://localhost:8000/images/courses/earth-analytics/bootcamp/terminal/linux-terminal.png" width="125%">
+ <img src="http://localhost:8000/images/courses/earth-analytics/bootcamp/terminal/linux-terminal.png" alt="This is what the Terminal on Linux looks like." width="125%" /></a>
+ <figcaption> This is what the Terminal on Linux looks like.
+ </figcaption>
+</figure>
+
+<h3 id="windows">Windows</h3>
+
+<p>There are many options for running <code class="highlighter-rouge">Bash</code> on Windows. For this textbook, you will use <code class="highlighter-rouge">Git Bash</code> which comes with your installation of <code class="highlighter-rouge">git</code>. Instructions for setting this up are here:</p>
+
+<ul>
+  <li><a href="http://localhost:8000/workshops/setup-earth-analytics-python/">Setting up Git, Bash, and Conda on your computer</a></li>
+</ul>
+
+<p>Once you have installed <code class="highlighter-rouge">git</code> on a Windows machine, you can open this Terminal by searching for <code class="highlighter-rouge">Git Bash</code> in the start menu. Use <code class="highlighter-rouge">Git Bash</code> for all hands-on activities in this textbook that ask you to use the <code class="highlighter-rouge">Terminal</code>.</p>
+
+<figure>
+ <a href="http://localhost:8000/images/courses/earth-analytics/bootcamp/terminal/git-bash-terminal.png">
+ <img src="http://localhost:8000/images/courses/earth-analytics/bootcamp/terminal/git-bash-terminal.png" alt="This is what the Git Bash Terminal on Windows looks like." /></a>
+ <figcaption> This is what the Git Bash Terminal on Windows looks like.
+ </figcaption>
+</figure>
+
+<h2 id="check-for-bash">Check For Bash</h2>
+
+<p>To check for <code class="highlighter-rouge">Bash</code> on your computer, you can type “bash” into your open terminal, like shown below, and hit the enter key.</p>
+
+<p>Note that you will only get a message back if the command is not successful. If the command is successful, you will simply see a new line prompt waiting for more input.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bash
+    <span class="err">$</span>
+</code></pre></div></div>
+
+<p>In this example, the dollar sign ($) is a prompt that shows you that <code class="highlighter-rouge">Bash</code> is waiting for more input.</p>
+
+<p>Depending on your computer’s set-up, you may see a different character as a prompt and/or additional information before the prompt, such as your current location within your computer’s file structure (i.e. your current working directory).</p>
+
+<h2 id="close-a-terminal-session">Close a Terminal Session</h2>
+
+<p>You can close the terminal at any time by typing the command “exit” and hitting the enter key.</p>
+
+
+        
+
+        <!-- if the page is a course lesson, add pagination -->
+
+        
+         <!-- This is clunky code that forces pagination across lesson sets -->
+<!-- NOTE: it won't include slideshows as written which makes sense -->
+<!-- add forced pagination -->
+<!-- first, get total lesson count -->
+
+<div class="previous--next">
+
+
+
+
+
+<!-- if it's page one - then no previous button -->
+<!-- how do i figure out the link? i have to loop through again? -->
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+       <a href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/directories/" class="btn btn--info btn--large btn-success" style="float:right" >
+         Computer Directories
+         <i class="fa fa-4 fa-arrow-circle-right" aria-hidden="true"></i></a>
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags
+  
+  <span class="a-main-tag">
+  <i class="fa fa-fw fa-tag" aria-hidden="true"></i><a href=http://localhost:8000/tags/reproducible-science-and-programming/>Reproducible science and programming</a>:
+  </span>
+  
+    
+    <a href=http://localhost:8000/tags/reproducible-science-and-programming/shell/>shell</a> 
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-30">August 30, 2019</time></p>
+        
+        <!-- Add license information w/ DOI to the bottom -->
+        
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+      </footer>
+
+      
+
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+<br><br>
+  <a href="http://bit.ly/2jc5SXy" target="_blank">
+    <img src="http://localhost:8000/images/earth-data-analytics-professional-certificate-banner.png" alt="Get a professional Certificate in Earth Data Analytics at University of Colorado, Boulder" width="40%"></a>
+</section>
+
+
+       
+    </div>
+
+    
+      
+
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:8000/courses/intro-to-earth-data-science/file-formats/use-text-files/format-text-with-markdown-jupyter-notebook/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Format Text In Jupyter Notebook With Markdown
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  8 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Markdown allows you to format text using simple, plain-text syntax and can be used to document code in a variety of tools, including Jupyter Notebook. Learn ...</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:8000/courses/intro-to-earth-data-science/file-formats/use-text-files/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Text File Formats for Earth Data Science
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">There are many text file formats that are useful for earth data science workflows including Markdown, text (.txt, .csv) files, and YAML (Yet Another Markup L...</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:8000/courses/intro-to-earth-data-science/file-formats/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">File Formats for Earth Data Science
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  1 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">
+
+     Section One
+
+  
+
+
+</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:8000/courses/earth-analytics-bootcamp/data-wrangling/data-wrangling-numpy-arrays/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Data Wrangling With Numpy Arrays
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  6 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">This lesson teaches you how to wrangle data (e.g. run multi-task functions, combine) with numpy arrays.
+</p>
+    </article>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+
+<!-- Adding analytics code -->
+
+        
+
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    <li>
+      <strong>&copy; 2019 Earth Lab -
+      <a href="http://localhost:8000/license"> All materials on this site
+        are subject to the CC BY-NC-ND 4.0 License. </a>
+      </strong>
+    </li>
+  </ul>
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/earthlabcu"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/earthlab"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:8000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<!--
+<div class="page__footer-copyright">Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+-->
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:8000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'earthlabcu';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+<script type="text/javascript"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-84081999-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>
+
