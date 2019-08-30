@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/205400714.svg)](https://zenodo.org/badge/latestdoi/205400714)
+
 # Earth Analytics - Intro to Earth Data Science Textbook Materials
 
 The Intro to Earth Data Science textbook is an introductory-level, online textbook created by instructors in Earth Lab and is used for the Professional Certificate in <a href="https://www.colorado.edu/earthlab/earth-data-analytics-foundations-professional-certificate" target="_blank">Earth Data Analytics - Foundations at CU Boulder</a>. 
