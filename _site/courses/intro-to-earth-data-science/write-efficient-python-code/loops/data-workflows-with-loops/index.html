@@ -1,0 +1,4885 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+
+<meta charset="utf-8">
+
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Create Data Workflows with Loops | Earth Data Science - Earth Lab </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Earth Data Science - Earth Lab">
+<meta property="og:title" content="Create Data Workflows with Loops">
+
+
+  <link rel="canonical" href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/">
+  <meta property="og:url" content="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/">
+
+
+
+  <meta content="Loops can be an important part of creating a data workflow in Python. Use loops to go from raw data to a finished project more effeciently." name="description">
+  <meta property="og:description" content="Loops can be an important part of creating a data workflow in Python. Use loops to go from raw data to a finished project more effeciently.">
+
+
+<!-- twitter cards -->
+
+  <meta name="twitter:site" content="@earthlabcu">
+  <meta name="twitter:title" content="Create Data Workflows with Loops">
+  <meta name="twitter:description" content="Loops can be an important part of creating a data workflow in Python. Use loops to go from raw data to a finished project more effeciently.">
+  <meta name="twitter:url" content="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/">
+
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://earthdatascience.org/images/earth_sm_twit.png">
+    <meta name="twitter:image:alt" content="The Earthlab Logo - image of a globe with courses, lessons and tutorials">
+
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-10-22T00:00:00-06:00">
+  
+    <link rel="next" href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/" title="Introduction to Writing Functions in Python">
+  
+  
+    <link rel="prev" href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/automate-data-tasks-with-loops/" title="Automate Data Tasks With Loops in Python">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Earth Analytics",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Earth Data Science - Earth Lab Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="LfpevjsE0wlELv5KKOZv1T2RhRimGSiRckWv5ZC19GU" />
+<!-- don't use the old cataloged meta tags -->
+<meta name="googlebot" content="noodp">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+
+<!-- For all browsers
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">-->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+    <script src="http://localhost:4000/assets/js/copy-code.js"></script>
+  </head>
+
+  <body>
+
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<!-- search bar begin  - turning off for now-->
+
+<div class="search">
+<form role="search" method="get" action="http://localhost:4000/search/">
+    <input id="q" name="q"
+           placeholder="Search earth data science site" type="text">
+</form>
+<!--<span class='cu-boulder'><a href="http://www.colorado.edu/earthlab" target="_blank">Earth Lab University of Colorado - Boulder Home </a></span> -->
+</div>
+
+
+<!-- search bar END -->
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><img src="/images/earth-lab-logo.png" alt="Earth Lab - Earth Data Science" style="height:80%;width:85%"></a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tutorials/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/courses/">Courses</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/workshops/">Workshops</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tools/">Tools</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
+          
+
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+  <div class="page__hero--overlay" style=" background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://localhost:4000/images/header-images/earth-data-analytics-professional-certificate-banner.jpg');">
+  <div class="wrapper">
+        <h1 class="page__title" itemprop="headline">
+          Earth Data Analytics Online Certificate
+        </h1>
+        <p><a href="http://bit.ly/2jc5SXy" target = "_blank" class="btn btn--light-outline btn--large">Enroll now! Learn more.</a></p>
+  </div>
+</div>
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
+ <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+ <a href="http://localhost:4000"></a>
+ 
+ 
+ <!-- there is an offset of 1 so subtract 2 from the final crumb number-->
+ 
+   
+   
+     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+       <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+       <meta itemprop="position" content="1" />
+     </li>
+     <span class="sep">/</span>
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/">Courses </a>
+        <meta itemprop="position" content="2" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/">Intro to earth data science </a>
+        <meta itemprop="position" content="3" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/">Write efficient python code </a>
+        <meta itemprop="position" content="4" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/">Loops </a>
+        <meta itemprop="position" content="5" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        <li class="current">Create Data Workflows with Loops</li>
+    
+  
+</ol>
+</nav>
+
+<!-- from min mistakes -->
+
+
+
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+
+
+    
+
+    
+     <!--  Might be able to delete this This is the code that populates the side bar navigation if there is a class-->
+      
+
+
+
+
+
+
+
+<!-- make sure we're only grabbing pages for the course -->
+
+
+
+<!--<h3>Week 7 Lessons</h3>-->
+<!-- i don't think the code below is used as modules is defined lower down as well. -->
+
+<!-- This is how modules are sorted on the left hand side bar -->
+
+
+
+
+
+
+<h5><a href="http://localhost:4000/courses/intro-to-earth-data-science-textbook/" ><i class="fa fa-home" aria-hidden="true"></i> Intro to earth data science textbook</a></h5>
+
+<!-- Just get the pages from this course -->
+
+
+
+
+
+
+<nav class="nav__list">
+
+
+
+
+
+
+
+<ul>
+  <li><span class="nav__sub-title"><i class="fa fa-book" aria-hidden="true"></i> Units</span>
+   <ul>
+
+       
+
+        
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 1 <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 INTRODUCTION TO OPEN REPRODUCIBLE SCIENCE WORKFLOWS</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/"> Chapter 1:   Open Reproducible Science Workflows </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/bash/"> Chapter 2:   Use Bash to Manipulate Files </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/"> Chapter 3:   Jupyter For Python </a>
+                                </li>
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 2 <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 FILE FORMATS FOR EARTH DATA SCIENCE</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/use-text-files/"> Chapter 4:   Text File Formats </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/use-spatial-data/"> Chapter 5:   Spatial Data Formats </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 3 <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 GIT AND GITHUB</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/version-control/"> Chapter 7:   Git/GitHub For Version Control </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/github-collaboration/"> Chapter 8:   GitHub for Collaboration </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 4 <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 PYTHON CODE FUNDAMENTALS</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/get-started-using-python/"> Chapter 10:   Get Started with Python Variables and Lists </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/use-python-packages/"> Chapter 11:   Use Python Packages </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/"> Chapter 12:   Files, Directories & Paths </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 6 <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 SCIENTIFIC DATA STRUCTURES IN PYTHON</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/numpy-arrays/"> Chapter 14:   Numpy Arrays </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/pandas-dataframes/"> Chapter 15:   Pandas Dataframes </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+                
+                    <li class='active-section'> <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/"><i class="fa fa-folder-open" aria-hidden="true"></i>
+                     7. WRITE EFFICIENT, CLEAN CODE USING OPEN SOURCE PYTHON</a></li>
+
+            
+
+<div class='active-menu'>
+      <ul>
+        
+        <!-- Note that class-order allows you to sort modules by class order if there are more than 1 in a class -->
+        
+
+        
+
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 16 Write clean expressive code  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/><!--7.1 --> - What is Clean Code</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/python-pep-8-style-guide/><!--7.2 --> - PEP 8 Style Guide</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/expressive-variable-names-make-code-easier-to-read/><!--7.3 --> - Expressive Code</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/dry-modular-code/><!--7.4 --> - DRY Modular Code</a></li>
+          
+          
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 17 Conditional statements in python  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/conditional-statements/><!--7.1 --> - Intro to Conditional Statements</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/conditional-statements/alternative-multiple-conditions/><!--7.2 --> - Alternative and Multiple Conditions</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 18 Loops in python  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/><!--7.1 --> - Introduction to Loops</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/automate-data-tasks-with-loops/><!--7.2 --> - Automate Data Tasks With Loops</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/ class='active'> <!--7.3 -->- Create Data Workflows with Loops</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/list-comprehensions><!--7.4 --> - List Comprehensions</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/loops-exercise/><!--7.5 --> - Loops Exercise</a></li>
+          
+          
+
+        
+       </ul>
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 19 Intro to functions in python  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/><!--7.1 --> - Intro to Functions</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-in-python/><!--7.2 --> - Write Functions in Python</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/><!--7.3 --> - Write Multi-Parameter Functions in Python</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+      </ul>
+
+      <!-- BEGIN Learn how to lessons -->
+       <ul>
+         
+         
+       </ul>
+
+
+     </div>
+
+
+      <!-- END BEGIN Learn how to lessons -->
+
+      <!--  -->
+      
+
+    
+  </ul></li>
+ </ul>
+
+
+ <ul>
+   <li><span class="nav__sub-title"><i class="fa fa-folder-open" aria-hidden="true"></i> Overview</span>
+    <ul>
+     
+          
+         <li> <a href="http://localhost:4000/courses/intro-to-earth-data-science/">
+           Intro to Earth Data Science Home </a></li>
+         
+
+     
+   </ul>
+ </li>
+</ul>
+</nav>
+
+<h5><a href="http://localhost:4000/courses/intro-to-earth-data-science-textbook/" ><i class="fa fa-home" aria-hidden="true"></i> intro-to-earth-data-science-textbook Home</a></h5>
+
+    
+
+    
+
+  
+  </div>
+
+
+
+
+
+
+<!-- begin science / science themes side bar nav -->
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <meta itemprop="headline" content="Create Data Workflows with Loops">
+    <meta itemprop="description" content="Loops can be an important part of creating a data workflow in Python. Use loops to go from raw data to a finished project more effeciently.">
+    <meta itemprop="datePublished" content="October 22, 2019">
+    <meta itemprop="dateModified" content="January 28, 2021">
+
+    <div class="page__inner-wrap">
+        <header>
+          
+
+          <!-- BEGIN: insert a welcome to the module block on pages that are part of a module set -->
+
+          <!-- END: insert welcome block -->
+
+          
+              
+
+            
+                <h1 class="page__title" itemprop="headline">
+                Lesson 3. 
+                 Create Data Workflows with Loops
+
+                
+                </h1>
+            
+
+          
+
+          
+            <div class="page__meta">
+              
+              
+              <a href="http://localhost:4000/authors/leah-wasser">Leah Wasser</a>, 
+              
+              
+              <a href="http://localhost:4000/authors/nathan-korinek">Nathan Korinek</a>
+              
+            </div>
+          
+
+            <br/>
+
+            
+
+              
+            
+
+            <!-- For tools pages add authors and tool title -->
+
+            
+        </header>
+
+
+
+      <section class="page__content" itemprop="text">
+
+        <!-- would like to include the TOC automatically but this does weird things-->
+        
+          
+            <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-file-text"></i> On This Page</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#learning-objectives" id="markdown-toc-learning-objectives"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Learning Objectives</a></li>
+  <li><a href="#build-a-data-workflow" id="markdown-toc-build-a-data-workflow">Build a Data Workflow</a></li>
+  <li><a href="#challenge-1-plot-temperature-by-maximum-value" id="markdown-toc-challenge-1-plot-temperature-by-maximum-value"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Challenge 1: Plot Temperature by Maximum Value</a></li>
+</ul>
+
+  </nav>
+</aside>
+
+<div class="notice--success">
+
+  <h2 id="learning-objectives"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Learning Objectives</h2>
+
+  <p>After completing this chapter, you will be able to:</p>
+
+  <ul>
+    <li>Iterate through multiple directories to access data within.</li>
+    <li>Nest loops in each other to run more complicated loops.</li>
+    <li>Use for loops to combine multiple datasets into one <strong>Pandas</strong> <code class="highlighter-rouge">DataFrame</code>.</li>
+  </ul>
+
+</div>
+
+<h2 id="build-a-data-workflow">Build a Data Workflow</h2>
+
+<p>Often, the data that you need for your workflow is messy and sometimes 
+difficult to access. It can be spread out over multiple files in many 
+directories. Manually processing data in multiple files and directories 
+manually is time consuming. It can be much easier to automate the process in 
+<strong>Python</strong> with <code class="highlighter-rouge">for</code> loops! This lesson will cover using loops to automate 
+data workflows where you have many different files that you need to work with.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">earthpy</span> <span class="k">as</span> <span class="n">et</span>
+
+<span class="c1"># Download data on average monthly temp for two California sites
+</span><span class="n">file_url</span> <span class="o">=</span> <span class="s">"https://ndownloader.figshare.com/files/21894528"</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">et</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">file_url</span><span class="p">)</span>
+<span class="n">data_path</span>
+
+<span class="c1"># Set working directory to earth-analytics
+</span><span class="n">os</span><span class="p">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">et</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">HOME</span><span class="p">,</span>
+                      <span class="s">"earth-analytics"</span><span class="p">,</span>
+                      <span class="s">"data"</span><span class="p">,</span>
+                      <span class="s">"earthpy-downloads"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Downloading from https://ndownloader.figshare.com/files/21894528
+Extracted output to /root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># List directories for the data
+</span><span class="n">os</span><span class="p">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['Sonoma', 'San-Diego']
+</code></pre></div></div>
+
+<p>The data downloaded above contain temperature data for two cities in California, 
+USA: Sonoma and San Diego. Within each directory you will find temperature
+data for the year stored in individual <strong>.csv</strong> files. Like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sonoma-1999-temp.csv
+Sonoma-2000-temp.csv
+Sonoma-2001-temp.csv
+</code></pre></div></div>
+
+<p>Your analysis goal is to create a plot of temperature across all years that you
+have data for in both locations. To create this plot, you will need to:</p>
+
+<ol>
+  <li>open each file</li>
+  <li>combine the data for each year into a single dataframe</li>
+  <li>add an attribute that specifies the location and year to the <code class="highlighter-rouge">data.frame</code></li>
+</ol>
+
+<p>The above steps will allow you to summarize the plot the data.</p>
+
+<h3 id="explore-your-data-using-loops">Explore Your Data Using Loops</h3>
+
+<p>It’s normal to open and look at your directory structure after you download new data.
+You can, however, also explore the data using <code class="highlighter-rouge">glob</code> to list directories and files 
+within each directory. To begin, create a list of all the directories in your 
+new download directory. If you remember from <a href="/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/os-glob-manipulate-file-paths/">Chapter 12 of this textbook, </a> you can use <code class="highlighter-rouge">glob</code> to create a list of files that match 
+certain criteria. You can then iterate through those lists with <code class="highlighter-rouge">for</code> loops to
+perform an operation on each file.</p>
+
+<p>Here, you create a list using <code class="highlighter-rouge">glob</code> of all of the folders in the data you 
+downloaded, and then iterate through that list with a <code class="highlighter-rouge">for</code> loop to print 
+out the name of each folder within the main directory.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Print all dirs found by glob
+</span><span class="n">data_dirs</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+<span class="n">all_dirs</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">data_dirs</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">a_dir</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego
+</code></pre></div></div>
+
+<h3 id="use-glob-inside-a-for-loop">Use <code class="highlighter-rouge">glob</code> Inside a <code class="highlighter-rouge">for</code> Loop</h3>
+
+<p>The folders printed out above are interesting, but they are not the files you 
+want to work on. The files are another directory down, stored within the folders 
+printed above. To access these files, you can use <code class="highlighter-rouge">glob</code> once again. Inside the 
+<code class="highlighter-rouge">for</code> loop, you can use <code class="highlighter-rouge">glob</code> to create a list of all of the files within each 
+folder in the original list.</p>
+
+<p>Below you can see two different lists printed, one with all of the files stored in 
+the <code class="highlighter-rouge">San-Diego</code> folder, and one with all of the files stored in the <code class="highlighter-rouge">Sonoma</code> folder.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create lists inside a for loop
+</span><span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="n">all_files</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">all_files</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2001-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2002-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2003-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2000-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-1999-temp.csv']
+['/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2002-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2000-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-1999-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2003-temp.csv', '/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2001-temp.csv']
+</code></pre></div></div>
+
+<h3 id="nesting-for-loops">Nesting <code class="highlighter-rouge">for</code> Loops</h3>
+
+<p>Now that you’ve created another list inside of a <code class="highlighter-rouge">for</code> loop, you can loop 
+through that list too! Below, you create the list of files inside each directory 
+with <code class="highlighter-rouge">glob</code>, and then you loop through that list to print out each individual file.</p>
+
+<p>Nesting <code class="highlighter-rouge">for</code> loops is a powerful tool, but can also be computationally expensive. 
+Each time the outer loop executes one cycle, the <code class="highlighter-rouge">for</code> loop that’s nested inside must 
+complete it’s entire loop before the outer loop executes it’s next cycle. You can nest 
+as many <code class="highlighter-rouge">for</code> loops as you want, but it’s good to keep this in mind. The more <code class="highlighter-rouge">for</code> 
+loops that are nested, the longer each cycle of the outer <code class="highlighter-rouge">for</code> loop will take.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Nesting for loops
+</span><span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+    <span class="n">all_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">dir_path</span><span class="p">))</span>
+    <span class="c1"># Create a nested loop which loops through each directory
+</span>    <span class="k">for</span> <span class="n">a_file_path</span> <span class="ow">in</span> <span class="n">all_file_paths</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a_file_path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2001-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2002-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2003-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2000-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-1999-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2002-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2000-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-1999-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2003-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2001-temp.csv
+</code></pre></div></div>
+
+<div class="notice--success alert alert-info">
+
+  <p><i class="fa fa-star"></i> <strong>Data Tip:</strong> Assigning Variables in <code class="highlighter-rouge">for</code> Loops</p>
+
+  <p>When assigning variables in <strong>Python</strong>, overwriting a variable with new data 
+can be useful to update values and make your code more legible. This can be useful 
+in <code class="highlighter-rouge">for</code> loops too, but can easily be done by accident as well. Below, you see that 
+for every file in the two folders that contain your data, the line <code class="highlighter-rouge">pd.read_csv()</code> 
+is run, and assigned to the variable <code class="highlighter-rouge">data</code>. However, with each new cycle of the for 
+loop, that variable is getting reassigned to a new file’s data.</p>
+
+  <p>You can see that even though you opened up and read every single file into <strong>pandas</strong>, 
+the only data stored in the <code class="highlighter-rouge">data</code> variable is from the last file that was read, which 
+happens to be the 2003 data from the Sonoma folder.</p>
+
+  <p>To avoid this data being overwritten every cycle, a common work around is to create a 
+list outside of the for loop, and append all of the values into that list. That way 
+the <code class="highlighter-rouge">data</code> variable from each cycle will be stored in the list with the data from that 
+cycle stored in it, preventing it from being overwritten.</p>
+
+</div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+    <span class="n">all_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">dir_path</span><span class="p">))</span>
+    <span class="c1"># Create a nested loop which loops through each directory
+</span>    <span class="k">for</span> <span class="n">a_file_path</span> <span class="ow">in</span> <span class="n">all_file_paths</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a_file_path</span><span class="p">)</span>
+        <span class="c1"># Read the file into a pandas dataframe and assign it to a variable
+</span>        <span class="n">temp_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">a_file_path</span><span class="p">)</span>
+<span class="n">temp_data_df</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2001-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2002-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2003-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-2000-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma/Sonoma-1999-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2002-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2000-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-1999-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2003-temp.csv
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/San-Diego/San-Diego-2001-temp.csv
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>January</th>
+      <th>February</th>
+      <th>March</th>
+      <th>April</th>
+      <th>May</th>
+      <th>June</th>
+      <th>July</th>
+      <th>August</th>
+      <th>September</th>
+      <th>October</th>
+      <th>November</th>
+      <th>December</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>62.2</td>
+      <td>61.7</td>
+      <td>63.7</td>
+      <td>63.6</td>
+      <td>67.5</td>
+      <td>72</td>
+      <td>73</td>
+      <td>73.5</td>
+      <td>73.2</td>
+      <td>71.1</td>
+      <td>66.9</td>
+      <td>63.3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="combining-pandas-datasets-in-a-list">Combining Pandas Datasets in a List</h3>
+
+<p><strong>pandas</strong> has a lot of functionality that makes modifying large amounts of 
+data much easier. One such function is the <code class="highlighter-rouge">concat</code> function, which can be 
+used to combine multiple <strong>pandas</strong> <code class="highlighter-rouge">DataFrames</code> stored in a list into one 
+<code class="highlighter-rouge">DataFrame</code>. You can combine this functionality with a list of <code class="highlighter-rouge">DataFrames</code> 
+created and added to a list in a <code class="highlighter-rouge">for</code> loop, and create a final <code class="highlighter-rouge">DataFrame</code> 
+with all of the data stored in the directory structure.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create a list outside of the for loop to store data
+</span><span class="n">all_df</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+    <span class="n">all_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">dir_path</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">a_file_path</span> <span class="ow">in</span> <span class="n">all_file_paths</span><span class="p">:</span>
+        <span class="n">temp_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">a_file_path</span><span class="p">)</span>
+        <span class="c1"># Append the data to the list you made to prevent it from being overwritten
+</span>        <span class="n">all_df</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_data_df</span><span class="p">)</span>
+
+<span class="c1"># Combine all the dataframes stored in the all_df list into one pandas dataframe
+</span><span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>January</th>
+      <th>February</th>
+      <th>March</th>
+      <th>April</th>
+      <th>May</th>
+      <th>June</th>
+      <th>July</th>
+      <th>August</th>
+      <th>September</th>
+      <th>October</th>
+      <th>November</th>
+      <th>December</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>56.5</td>
+      <td>58.4</td>
+      <td>68.0</td>
+      <td>66.7</td>
+      <td>83.1</td>
+      <td>86.1</td>
+      <td>81.2</td>
+      <td>85.3</td>
+      <td>81.0</td>
+      <td>78.4</td>
+      <td>64.0</td>
+      <td>55.6</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>55.8</td>
+      <td>62.9</td>
+      <td>63.5</td>
+      <td>66.9</td>
+      <td>74.5</td>
+      <td>84.2</td>
+      <td>82.8</td>
+      <td>82.1</td>
+      <td>84.5</td>
+      <td>75.7</td>
+      <td>67.6</td>
+      <td>57.4</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>58.9</td>
+      <td>61.8</td>
+      <td>66.4</td>
+      <td>61.5</td>
+      <td>74.2</td>
+      <td>81.1</td>
+      <td>87.0</td>
+      <td>83.5</td>
+      <td>85.0</td>
+      <td>82.7</td>
+      <td>61.0</td>
+      <td>56.4</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>56.8</td>
+      <td>58.0</td>
+      <td>64.8</td>
+      <td>69.5</td>
+      <td>75.0</td>
+      <td>79.5</td>
+      <td>81.4</td>
+      <td>83.7</td>
+      <td>83.4</td>
+      <td>71.8</td>
+      <td>60.7</td>
+      <td>58.5</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>56.1</td>
+      <td>56.6</td>
+      <td>58.7</td>
+      <td>68.3</td>
+      <td>72.7</td>
+      <td>80.6</td>
+      <td>80.9</td>
+      <td>82.9</td>
+      <td>81.3</td>
+      <td>79.1</td>
+      <td>64.2</td>
+      <td>61.5</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>63.0</td>
+      <td>66.2</td>
+      <td>63.6</td>
+      <td>63.7</td>
+      <td>66.1</td>
+      <td>68.7</td>
+      <td>71.8</td>
+      <td>73.4</td>
+      <td>75.5</td>
+      <td>68.4</td>
+      <td>71.4</td>
+      <td>63.7</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>65.8</td>
+      <td>65.3</td>
+      <td>63.7</td>
+      <td>67.7</td>
+      <td>69.1</td>
+      <td>72.4</td>
+      <td>73.5</td>
+      <td>76.3</td>
+      <td>75.5</td>
+      <td>69.5</td>
+      <td>66.0</td>
+      <td>66.9</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>65.2</td>
+      <td>64.9</td>
+      <td>63.6</td>
+      <td>64.6</td>
+      <td>64.4</td>
+      <td>66.9</td>
+      <td>72.7</td>
+      <td>72.7</td>
+      <td>71.4</td>
+      <td>77.7</td>
+      <td>67.4</td>
+      <td>67.6</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>71.4</td>
+      <td>64.6</td>
+      <td>66.5</td>
+      <td>65.2</td>
+      <td>66.9</td>
+      <td>67.4</td>
+      <td>74.3</td>
+      <td>77.5</td>
+      <td>74.0</td>
+      <td>73.1</td>
+      <td>67.4</td>
+      <td>64.6</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>62.2</td>
+      <td>61.7</td>
+      <td>63.7</td>
+      <td>63.6</td>
+      <td>67.5</td>
+      <td>72.0</td>
+      <td>73.0</td>
+      <td>73.5</td>
+      <td>73.2</td>
+      <td>71.1</td>
+      <td>66.9</td>
+      <td>63.3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="extracting-data-from-pathnames">Extracting Data from Pathnames</h3>
+
+<p>Often times when data is stored in many directories, the name of the folder 
+that the data is stored in can have useful information. Some examples of this include:</p>
+
+<ol>
+  <li>The date the data was collected</li>
+  <li>The location where the data was collected</li>
+  <li>Physical attributes of the data</li>
+  <li>The resolution of the data</li>
+</ol>
+
+<p>There are countless other examples of data that can be stored in a file pathname. 
+Because of this, it can be useful to add data from a pathname to your 
+data.</p>
+
+<p>In this example, the two folders that store all of the files contain useful 
+information in the folder names. Specifically, the names, <code class="highlighter-rouge">San-Diego</code> and <code class="highlighter-rouge">Sonoma</code>, 
+are indicative of where the data was collected. You can add this information to a new 
+column in the <strong>pandas</strong> <code class="highlighter-rouge">DataFrames</code> you are creating.</p>
+
+<div class="notice--success alert alert-info">
+
+  <p><i class="fa fa-star"></i> <strong>Data Tip:</strong> Extracting Values from Pathnames</p>
+
+  <p>You can extract information from a path name in many ways. 
+In this exercise, we use <code class="highlighter-rouge">os.path.basename()</code> to get our information, but
+that is not always the best way to collect information from a path. This wouldn’t
+work if, for example, the infomation you wanted from a path wasn’t last folder name 
+in your pathname. For more ways to extract information from a path, see 
+<a href="/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/os-glob-manipulate-file-paths/">this lesson modifying paths with <code class="highlighter-rouge">glob</code> and <code class="highlighter-rouge">os</code>.</a></p>
+
+</div>
+
+<p>You can extract the last folder name in your pathname by using <code class="highlighter-rouge">os.path.basename()</code>. 
+This function will grab the last folder name in a pathname and return 
+it as a string.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get the basename from a pathname
+</span>
+<span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">all_dirs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"The pathname without running os.path.basename():</span><span class="se">\n</span><span class="s">"</span> <span class="o">+</span> <span class="n">all_dirs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">The infromation extracted from the pathname by os.path.basename():</span><span class="se">\n</span><span class="s">"</span> <span class="o">+</span> <span class="n">basename</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The pathname without running os.path.basename():
+/root/earth-analytics/data/earthpy-downloads/avg-monthly-temp-fahr/Sonoma
+
+The infromation extracted from the pathname by os.path.basename():
+Sonoma
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read in filenames without modifying the pathnames
+</span>
+<span class="n">all_df</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+    <span class="n">all_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">dir_path</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">a_file_path</span> <span class="ow">in</span> <span class="n">all_file_paths</span><span class="p">:</span>
+        <span class="n">temp_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">a_file_path</span><span class="p">)</span>
+        <span class="c1"># Reading the pathname from each directory into the dataframe.
+</span>        <span class="c1"># Notice how it reads in the entire pathname.
+</span>        <span class="n">temp_data_df</span><span class="p">[</span><span class="s">"location"</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_dir</span>
+        <span class="n">all_df</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_data_df</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>January</th>
+      <th>February</th>
+      <th>March</th>
+      <th>April</th>
+      <th>May</th>
+      <th>June</th>
+      <th>July</th>
+      <th>August</th>
+      <th>September</th>
+      <th>October</th>
+      <th>November</th>
+      <th>December</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>56.5</td>
+      <td>58.4</td>
+      <td>68.0</td>
+      <td>66.7</td>
+      <td>83.1</td>
+      <td>86.1</td>
+      <td>81.2</td>
+      <td>85.3</td>
+      <td>81.0</td>
+      <td>78.4</td>
+      <td>64.0</td>
+      <td>55.6</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>55.8</td>
+      <td>62.9</td>
+      <td>63.5</td>
+      <td>66.9</td>
+      <td>74.5</td>
+      <td>84.2</td>
+      <td>82.8</td>
+      <td>82.1</td>
+      <td>84.5</td>
+      <td>75.7</td>
+      <td>67.6</td>
+      <td>57.4</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>58.9</td>
+      <td>61.8</td>
+      <td>66.4</td>
+      <td>61.5</td>
+      <td>74.2</td>
+      <td>81.1</td>
+      <td>87.0</td>
+      <td>83.5</td>
+      <td>85.0</td>
+      <td>82.7</td>
+      <td>61.0</td>
+      <td>56.4</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>56.8</td>
+      <td>58.0</td>
+      <td>64.8</td>
+      <td>69.5</td>
+      <td>75.0</td>
+      <td>79.5</td>
+      <td>81.4</td>
+      <td>83.7</td>
+      <td>83.4</td>
+      <td>71.8</td>
+      <td>60.7</td>
+      <td>58.5</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>56.1</td>
+      <td>56.6</td>
+      <td>58.7</td>
+      <td>68.3</td>
+      <td>72.7</td>
+      <td>80.6</td>
+      <td>80.9</td>
+      <td>82.9</td>
+      <td>81.3</td>
+      <td>79.1</td>
+      <td>64.2</td>
+      <td>61.5</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>63.0</td>
+      <td>66.2</td>
+      <td>63.6</td>
+      <td>63.7</td>
+      <td>66.1</td>
+      <td>68.7</td>
+      <td>71.8</td>
+      <td>73.4</td>
+      <td>75.5</td>
+      <td>68.4</td>
+      <td>71.4</td>
+      <td>63.7</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>65.8</td>
+      <td>65.3</td>
+      <td>63.7</td>
+      <td>67.7</td>
+      <td>69.1</td>
+      <td>72.4</td>
+      <td>73.5</td>
+      <td>76.3</td>
+      <td>75.5</td>
+      <td>69.5</td>
+      <td>66.0</td>
+      <td>66.9</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>65.2</td>
+      <td>64.9</td>
+      <td>63.6</td>
+      <td>64.6</td>
+      <td>64.4</td>
+      <td>66.9</td>
+      <td>72.7</td>
+      <td>72.7</td>
+      <td>71.4</td>
+      <td>77.7</td>
+      <td>67.4</td>
+      <td>67.6</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>71.4</td>
+      <td>64.6</td>
+      <td>66.5</td>
+      <td>65.2</td>
+      <td>66.9</td>
+      <td>67.4</td>
+      <td>74.3</td>
+      <td>77.5</td>
+      <td>74.0</td>
+      <td>73.1</td>
+      <td>67.4</td>
+      <td>64.6</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>62.2</td>
+      <td>61.7</td>
+      <td>63.7</td>
+      <td>63.6</td>
+      <td>67.5</td>
+      <td>72.0</td>
+      <td>73.0</td>
+      <td>73.5</td>
+      <td>73.2</td>
+      <td>71.1</td>
+      <td>66.9</td>
+      <td>63.3</td>
+      <td>/root/earth-analytics/data/earthpy-downloads/a...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read in filenames using os to modify the pathnames
+</span>
+<span class="n">all_df</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="n">all_dirs</span><span class="p">:</span>
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="s">"*"</span><span class="p">)</span>
+    <span class="n">all_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">dir_path</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">a_file_path</span> <span class="ow">in</span> <span class="n">all_file_paths</span><span class="p">:</span>
+        <span class="n">temp_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">a_file_path</span><span class="p">)</span>
+        <span class="c1"># Read the pathname from each directory into the dataframe. 
+</span>        <span class="c1"># Notice how it reads just the last folder name into the column now.
+</span>        <span class="n">temp_data_df</span><span class="p">[</span><span class="s">"location"</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">a_dir</span><span class="p">)</span>
+        <span class="n">all_df</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_data_df</span><span class="p">)</span>
+
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_df</span><span class="p">)</span>
+<span class="n">all_data</span>
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>January</th>
+      <th>February</th>
+      <th>March</th>
+      <th>April</th>
+      <th>May</th>
+      <th>June</th>
+      <th>July</th>
+      <th>August</th>
+      <th>September</th>
+      <th>October</th>
+      <th>November</th>
+      <th>December</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>56.5</td>
+      <td>58.4</td>
+      <td>68.0</td>
+      <td>66.7</td>
+      <td>83.1</td>
+      <td>86.1</td>
+      <td>81.2</td>
+      <td>85.3</td>
+      <td>81.0</td>
+      <td>78.4</td>
+      <td>64.0</td>
+      <td>55.6</td>
+      <td>Sonoma</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>55.8</td>
+      <td>62.9</td>
+      <td>63.5</td>
+      <td>66.9</td>
+      <td>74.5</td>
+      <td>84.2</td>
+      <td>82.8</td>
+      <td>82.1</td>
+      <td>84.5</td>
+      <td>75.7</td>
+      <td>67.6</td>
+      <td>57.4</td>
+      <td>Sonoma</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>58.9</td>
+      <td>61.8</td>
+      <td>66.4</td>
+      <td>61.5</td>
+      <td>74.2</td>
+      <td>81.1</td>
+      <td>87.0</td>
+      <td>83.5</td>
+      <td>85.0</td>
+      <td>82.7</td>
+      <td>61.0</td>
+      <td>56.4</td>
+      <td>Sonoma</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>56.8</td>
+      <td>58.0</td>
+      <td>64.8</td>
+      <td>69.5</td>
+      <td>75.0</td>
+      <td>79.5</td>
+      <td>81.4</td>
+      <td>83.7</td>
+      <td>83.4</td>
+      <td>71.8</td>
+      <td>60.7</td>
+      <td>58.5</td>
+      <td>Sonoma</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>56.1</td>
+      <td>56.6</td>
+      <td>58.7</td>
+      <td>68.3</td>
+      <td>72.7</td>
+      <td>80.6</td>
+      <td>80.9</td>
+      <td>82.9</td>
+      <td>81.3</td>
+      <td>79.1</td>
+      <td>64.2</td>
+      <td>61.5</td>
+      <td>Sonoma</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>63.0</td>
+      <td>66.2</td>
+      <td>63.6</td>
+      <td>63.7</td>
+      <td>66.1</td>
+      <td>68.7</td>
+      <td>71.8</td>
+      <td>73.4</td>
+      <td>75.5</td>
+      <td>68.4</td>
+      <td>71.4</td>
+      <td>63.7</td>
+      <td>San-Diego</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>65.8</td>
+      <td>65.3</td>
+      <td>63.7</td>
+      <td>67.7</td>
+      <td>69.1</td>
+      <td>72.4</td>
+      <td>73.5</td>
+      <td>76.3</td>
+      <td>75.5</td>
+      <td>69.5</td>
+      <td>66.0</td>
+      <td>66.9</td>
+      <td>San-Diego</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>65.2</td>
+      <td>64.9</td>
+      <td>63.6</td>
+      <td>64.6</td>
+      <td>64.4</td>
+      <td>66.9</td>
+      <td>72.7</td>
+      <td>72.7</td>
+      <td>71.4</td>
+      <td>77.7</td>
+      <td>67.4</td>
+      <td>67.6</td>
+      <td>San-Diego</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>71.4</td>
+      <td>64.6</td>
+      <td>66.5</td>
+      <td>65.2</td>
+      <td>66.9</td>
+      <td>67.4</td>
+      <td>74.3</td>
+      <td>77.5</td>
+      <td>74.0</td>
+      <td>73.1</td>
+      <td>67.4</td>
+      <td>64.6</td>
+      <td>San-Diego</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>62.2</td>
+      <td>61.7</td>
+      <td>63.7</td>
+      <td>63.6</td>
+      <td>67.5</td>
+      <td>72.0</td>
+      <td>73.0</td>
+      <td>73.5</td>
+      <td>73.2</td>
+      <td>71.1</td>
+      <td>66.9</td>
+      <td>63.3</td>
+      <td>San-Diego</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="plot-your-temperature-data">Plot Your Temperature Data</h3>
+
+<p>With the new column that specifies where the data was collected, you can use 
+the <strong>pandas</strong> <code class="highlighter-rouge">groupby</code> function to plot a chart for each location! The <code class="highlighter-rouge">groupby</code> 
+function will create a new plot for each unique entry in a column. Since there are 
+two locations in the <code class="highlighter-rouge">location</code> column, you can produce two graphs, one for each location.</p>
+
+<p>Below, you can create a new column that is the mean of all of the monthly readings for 
+the average temperature in each location. With that column, you can plot the average 
+annual temperature of each location by year using the <code class="highlighter-rouge">groupby</code> function.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Creating a dataframe that is just the columns for temperature from each month.
+</span><span class="n">just_monthly_data_df</span> <span class="o">=</span> <span class="n">all_data</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">"January"</span><span class="p">:</span><span class="s">"December"</span><span class="p">]</span>
+
+<span class="c1"># Get the average of each row in that dataframe and assigning the output to a new column in the original dataframe
+</span><span class="n">all_data</span><span class="p">[</span><span class="s">'annual_average_temp'</span><span class="p">]</span> <span class="o">=</span> <span class="n">just_monthly_data_df</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">all_data</span>
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>January</th>
+      <th>February</th>
+      <th>March</th>
+      <th>April</th>
+      <th>May</th>
+      <th>June</th>
+      <th>July</th>
+      <th>August</th>
+      <th>September</th>
+      <th>October</th>
+      <th>November</th>
+      <th>December</th>
+      <th>location</th>
+      <th>annual_average_temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>56.5</td>
+      <td>58.4</td>
+      <td>68.0</td>
+      <td>66.7</td>
+      <td>83.1</td>
+      <td>86.1</td>
+      <td>81.2</td>
+      <td>85.3</td>
+      <td>81.0</td>
+      <td>78.4</td>
+      <td>64.0</td>
+      <td>55.6</td>
+      <td>Sonoma</td>
+      <td>72.025000</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>55.8</td>
+      <td>62.9</td>
+      <td>63.5</td>
+      <td>66.9</td>
+      <td>74.5</td>
+      <td>84.2</td>
+      <td>82.8</td>
+      <td>82.1</td>
+      <td>84.5</td>
+      <td>75.7</td>
+      <td>67.6</td>
+      <td>57.4</td>
+      <td>Sonoma</td>
+      <td>71.491667</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>58.9</td>
+      <td>61.8</td>
+      <td>66.4</td>
+      <td>61.5</td>
+      <td>74.2</td>
+      <td>81.1</td>
+      <td>87.0</td>
+      <td>83.5</td>
+      <td>85.0</td>
+      <td>82.7</td>
+      <td>61.0</td>
+      <td>56.4</td>
+      <td>Sonoma</td>
+      <td>71.625000</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>56.8</td>
+      <td>58.0</td>
+      <td>64.8</td>
+      <td>69.5</td>
+      <td>75.0</td>
+      <td>79.5</td>
+      <td>81.4</td>
+      <td>83.7</td>
+      <td>83.4</td>
+      <td>71.8</td>
+      <td>60.7</td>
+      <td>58.5</td>
+      <td>Sonoma</td>
+      <td>70.258333</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>56.1</td>
+      <td>56.6</td>
+      <td>58.7</td>
+      <td>68.3</td>
+      <td>72.7</td>
+      <td>80.6</td>
+      <td>80.9</td>
+      <td>82.9</td>
+      <td>81.3</td>
+      <td>79.1</td>
+      <td>64.2</td>
+      <td>61.5</td>
+      <td>Sonoma</td>
+      <td>70.241667</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>63.0</td>
+      <td>66.2</td>
+      <td>63.6</td>
+      <td>63.7</td>
+      <td>66.1</td>
+      <td>68.7</td>
+      <td>71.8</td>
+      <td>73.4</td>
+      <td>75.5</td>
+      <td>68.4</td>
+      <td>71.4</td>
+      <td>63.7</td>
+      <td>San-Diego</td>
+      <td>67.958333</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2000</td>
+      <td>65.8</td>
+      <td>65.3</td>
+      <td>63.7</td>
+      <td>67.7</td>
+      <td>69.1</td>
+      <td>72.4</td>
+      <td>73.5</td>
+      <td>76.3</td>
+      <td>75.5</td>
+      <td>69.5</td>
+      <td>66.0</td>
+      <td>66.9</td>
+      <td>San-Diego</td>
+      <td>69.308333</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>65.2</td>
+      <td>64.9</td>
+      <td>63.6</td>
+      <td>64.6</td>
+      <td>64.4</td>
+      <td>66.9</td>
+      <td>72.7</td>
+      <td>72.7</td>
+      <td>71.4</td>
+      <td>77.7</td>
+      <td>67.4</td>
+      <td>67.6</td>
+      <td>San-Diego</td>
+      <td>68.258333</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2003</td>
+      <td>71.4</td>
+      <td>64.6</td>
+      <td>66.5</td>
+      <td>65.2</td>
+      <td>66.9</td>
+      <td>67.4</td>
+      <td>74.3</td>
+      <td>77.5</td>
+      <td>74.0</td>
+      <td>73.1</td>
+      <td>67.4</td>
+      <td>64.6</td>
+      <td>San-Diego</td>
+      <td>69.408333</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2001</td>
+      <td>62.2</td>
+      <td>61.7</td>
+      <td>63.7</td>
+      <td>63.6</td>
+      <td>67.5</td>
+      <td>72.0</td>
+      <td>73.0</td>
+      <td>73.5</td>
+      <td>73.2</td>
+      <td>71.1</td>
+      <td>66.9</td>
+      <td>63.3</td>
+      <td>San-Diego</td>
+      <td>67.641667</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Sort the data by year for nicer plotting
+</span><span class="n">all_data</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">"Year"</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">all_data</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'location'</span><span class="p">):</span>
+    <span class="n">group</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'location'</span><span class="p">).</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'Year'</span><span class="p">,</span> 
+                                   <span class="n">y</span><span class="o">=</span><span class="s">'annual_average_temp'</span><span class="p">,</span>
+                                   <span class="n">title</span><span class="o">=</span><span class="s">"Annual Average Temperature ºF"</span><span class="p">,</span>
+                                   <span class="n">label</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                                   <span class="n">style</span><span class="o">=</span><span class="s">'.--'</span><span class="p">,</span>
+                                   <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+                                   <span class="n">alpha</span><span class="o">=</span><span class="p">.</span><span class="mi">8</span><span class="p">)</span>
+
+    
+<span class="n">ax</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s">"Year"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s">"Temperature (F)"</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1999</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<figure class="output display_data">
+
+<img src="http://localhost:4000/images/courses/intro-eds-textbook/07-efficient-clean-code-python/loops/2019-10-22-loops-03-workflows/2019-10-22-loops-03-workflows_24_0.png" alt="Plot showing average annual temperature for San Diego and Sonoma from 1999 to 2003." />
+<figcaption>Plot showing average annual temperature for San Diego and Sonoma from 1999 to 2003.</figcaption>
+
+</figure>
+
+<div class="notice--warning">
+
+  <h2 id="challenge-1-plot-temperature-by-maximum-value"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Challenge 1: Plot Temperature by Maximum Value</h2>
+
+  <p>Above, you summarized the year by the average temperature for each year, plotted the 
+two locations to compare their average annual temperatures. In this challenge, plot 
+the maximum annual temperature for each location annually. Your graph should look 
+similar to the one above, but it should display the maximum annual temperature instead 
+of the average. You can use a similar method to getting the average to get the maximum 
+temperature. Using <code class="highlighter-rouge">max</code> instead of <code class="highlighter-rouge">mean</code> of the <code class="highlighter-rouge">just_monthly_data_df</code> should return 
+a series of data that’s the maximum values, which you can then assign to a column in the 
+main dataframe and plot like above.</p>
+</div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create data and plot answer here
+</span></code></pre></div></div>
+
+<figure class="output display_data">
+
+<img src="http://localhost:4000/images/courses/intro-eds-textbook/07-efficient-clean-code-python/loops/2019-10-22-loops-03-workflows/2019-10-22-loops-03-workflows_28_0.png" alt="Challenge 1 Example Plot showing maximum annual temperature for San Diego and Sonoma from 1999 to 2003." />
+<figcaption>Challenge 1 Example Plot showing maximum annual temperature for San Diego and Sonoma from 1999 to 2003.</figcaption>
+
+</figure>
+
+
+          
+
+        
+
+        <!-- if the page is a course lesson, add pagination -->
+
+        
+         <!-- This is clunky code that forces pagination across lesson sets -->
+<!-- NOTE: it won't include slideshows as written which makes sense -->
+<!-- add forced pagination -->
+<!-- first, get total lesson count -->
+
+<div class="previous--next">
+
+
+
+
+
+<!-- if it's page one - then no previous button -->
+<!-- how do i figure out the link? i have to loop through again? -->
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+       <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/list-comprehensions" class="btn btn--info btn--large btn-success" style="float:right" >
+         List Comprehensions
+         <i class="fa fa-4 fa-arrow-circle-right" aria-hidden="true"></i></a>
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+        <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/automate-data-tasks-with-loops/" class="btn btn--info btn--large btn-success">
+          <i class="fa fa-4 fa-arrow-circle-left fa-4" aria-hidden="true"></i>
+          Automate Data Tasks With Loops </a>
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags
+  
+  <span class="a-main-tag">
+  <i class="fa fa-fw fa-tag" aria-hidden="true"></i><a href=http://localhost:4000/tags/reproducible-science-and-programming/>Reproducible science and programming</a>:
+  </span>
+  
+    
+    <a href=http://localhost:4000/tags/reproducible-science-and-programming/python/>python</a> 
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-28">January 28, 2021</time></p>
+        
+        <!-- Add license information w/ DOI to the bottom -->
+        
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+      </footer>
+
+      
+
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+<br><br>
+  <a href="http://bit.ly/2jc5SXy" target="_blank">
+    <img src="http://localhost:4000/images/earth-data-analytics-professional-certificate-banner.png" alt="Get a professional Certificate in Earth Data Analytics at University of Colorado, Boulder" width="40%"></a>
+</section>
+
+
+       
+    </div>
+
+    
+      
+
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/earth-analytics-bootcamp/plot-data-python">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Plot Data With Matplotlib
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  1 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">
+
+     This Week
+
+  
+
+
+</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/summarize-climate-data-by-season/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Calculate Seasonal Summary Values from Climate Data Variables Stored in NetCDF 4 Format: Work With MACA v2 Climate Data in Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  25 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Learn how to calculate seasonal summary values for MACA 2 climate data using xarray and region mask in open source Python.
+</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/subset-netcdf4-climate-data-spatially-aoi/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Calculate Summary Values Using Spatial Areas of Interest (AOIs) including Shapefiles for Climate Data Variables Stored in NetCDF 4 Format: Work With MACA v2 Climate Data in Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  33 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Climate datasets stored in netcdf 4 format often cover the entire globe or an entire country. Learn how to subset climate data spatially and by time slices u...</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/use-netcdf-in-python-xarray/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">How to Open and Process NetCDF 4 Data Format in Open Source Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  26 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Historic and projected climate data are most often stored in netcdf 4 format. Learn how to open and process MACA version 2 climate data for the Continental U...</p>
+    </article>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+
+<!-- Adding analytics code -->
+
+        
+
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    <li>
+      <strong>&copy; 2021 Earth Lab -
+      <a href="http://localhost:4000/license"> All materials on this site
+        are subject to the CC BY-NC-ND 4.0 License. </a>
+      </strong>
+    </li>
+  </ul>
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/earthlabcu"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/earthlab"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<!--
+<div class="page__footer-copyright">Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+-->
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'earthlabcu';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+<script type="text/javascript"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-84081999-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>
+
