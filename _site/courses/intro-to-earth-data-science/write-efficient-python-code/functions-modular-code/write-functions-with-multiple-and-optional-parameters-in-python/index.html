@@ -1,0 +1,4370 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+
+<meta charset="utf-8">
+
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Write Functions with Multiple Parameters in Python | Earth Data Science - Earth Lab </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Earth Data Science - Earth Lab">
+<meta property="og:title" content="Write Functions with Multiple Parameters in Python">
+
+
+  <link rel="canonical" href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/">
+  <meta property="og:url" content="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/">
+
+
+
+  <meta content="A function is a reusable block of code that performs a specific task. Learn how to write functions that can take multiple as well as optional parameters in Python to eliminate repetition and improve efficiency in your code." name="description">
+  <meta property="og:description" content="A function is a reusable block of code that performs a specific task. Learn how to write functions that can take multiple as well as optional parameters in Python to eliminate repetition and improve efficiency in your code.">
+
+
+<!-- twitter cards -->
+
+  <meta name="twitter:site" content="@earthlabcu">
+  <meta name="twitter:title" content="Write Functions with Multiple Parameters in Python">
+  <meta name="twitter:description" content="A function is a reusable block of code that performs a specific task. Learn how to write functions that can take multiple as well as optional parameters in Python to eliminate repetition and improve efficiency in your code.">
+  <meta name="twitter:url" content="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/">
+
+  
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://earthdatascience.org/images/earth_sm_twit.png">
+    <meta name="twitter:image:alt" content="The Earthlab Logo - image of a globe with courses, lessons and tutorials">
+
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2019-11-12T00:00:00-07:00">
+  
+    <link rel="next" href="http://localhost:4000/courses/use-data-open-source-python/use-time-series-data-in-python/floods-return-period-and-probability/" title="Why A Hundred Year Flood Can Occur Every Year. Calculate Exceedance Probability and Return Periods in Python">
+  
+  
+    <link rel="prev" href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-in-python/" title="Write Functions in Python">
+  
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Earth Analytics",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Earth Data Science - Earth Lab Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="LfpevjsE0wlELv5KKOZv1T2RhRimGSiRckWv5ZC19GU" />
+<!-- don't use the old cataloged meta tags -->
+<meta name="googlebot" content="noodp">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+
+<!-- For all browsers
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">-->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+    <script src="http://localhost:4000/assets/js/copy-code.js"></script>
+  </head>
+
+  <body>
+
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<!-- search bar begin  - turning off for now-->
+
+<div class="search">
+<form role="search" method="get" action="http://localhost:4000/search/">
+    <input id="q" name="q"
+           placeholder="Search earth data science site" type="text">
+</form>
+<!--<span class='cu-boulder'><a href="http://www.colorado.edu/earthlab" target="_blank">Earth Lab University of Colorado - Boulder Home </a></span> -->
+</div>
+
+
+<!-- search bar END -->
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><img src="/images/earth-lab-logo.png" alt="Earth Lab - Earth Data Science" style="height:80%;width:85%"></a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tutorials/">Tutorials</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/courses/">Courses</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/workshops/">Workshops</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tools/">Tools</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
+          
+
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+  <div class="page__hero--overlay" style=" background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://localhost:4000/images/header-images/earth-data-analytics-professional-certificate-banner.jpg');">
+  <div class="wrapper">
+        <h1 class="page__title" itemprop="headline">
+          Earth Data Analytics Online Certificate
+        </h1>
+        <p><a href="http://bit.ly/2jc5SXy" target = "_blank" class="btn btn--light-outline btn--large">Enroll now! Learn more.</a></p>
+  </div>
+</div>
+
+
+
+
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
+ <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+ <a href="http://localhost:4000"></a>
+ 
+ 
+ <!-- there is an offset of 1 so subtract 2 from the final crumb number-->
+ 
+   
+   
+     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+       <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+       <meta itemprop="position" content="1" />
+     </li>
+     <span class="sep">/</span>
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/">Courses </a>
+        <meta itemprop="position" content="2" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/">Intro to earth data science </a>
+        <meta itemprop="position" content="3" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/">Write efficient python code </a>
+        <meta itemprop="position" content="4" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/">Functions modular code </a>
+        <meta itemprop="position" content="5" />
+        <span class="sep">/</span></li>
+    
+  
+   
+    
+        <li class="current">Write Functions with Multiple Parameters in Python</li>
+    
+  
+</ol>
+</nav>
+
+<!-- from min mistakes -->
+
+
+
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+
+
+    
+
+    
+     <!--  Might be able to delete this This is the code that populates the side bar navigation if there is a class-->
+      
+
+
+
+
+
+
+
+<!-- make sure we're only grabbing pages for the course -->
+
+
+
+<!--<h3>Week 7 Lessons</h3>-->
+<!-- i don't think the code below is used as modules is defined lower down as well. -->
+
+<!-- This is how modules are sorted on the left hand side bar -->
+
+
+
+
+
+
+<h5><a href="http://localhost:4000/courses/intro-to-earth-data-science-textbook/" ><i class="fa fa-home" aria-hidden="true"></i> Intro to earth data science textbook</a></h5>
+
+<!-- Just get the pages from this course -->
+
+
+
+
+
+
+<nav class="nav__list">
+
+
+
+
+
+
+
+<ul>
+  <li><span class="nav__sub-title"><i class="fa fa-book" aria-hidden="true"></i> Units</span>
+   <ul>
+
+       
+
+        
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 1 <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 INTRODUCTION TO OPEN REPRODUCIBLE SCIENCE WORKFLOWS</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/"> Chapter 1:   Open Reproducible Science Workflows </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/bash/"> Chapter 2:   Use Bash to Manipulate Files </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/"> Chapter 3:   Jupyter For Python </a>
+                                </li>
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 2 <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 FILE FORMATS FOR EARTH DATA SCIENCE</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/use-text-files/"> Chapter 4:   Text File Formats </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/use-spatial-data/"> Chapter 5:   Spatial Data Formats </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 3 <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 GIT AND GITHUB</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/version-control/"> Chapter 7:   Git/GitHub For Version Control </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/github-collaboration/"> Chapter 8:   GitHub for Collaboration </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 4 <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 PYTHON CODE FUNDAMENTALS</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/get-started-using-python/"> Chapter 10:   Get Started with Python Variables and Lists </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/use-python-packages/"> Chapter 11:   Use Python Packages </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/"> Chapter 12:   Files, Directories & Paths </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 6 <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 SCIENTIFIC DATA STRUCTURES IN PYTHON</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/numpy-arrays/"> Chapter 14:   Numpy Arrays </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/pandas-dataframes/"> Chapter 15:   Pandas Dataframes </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+                
+                    <li class='active-section'> <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/"><i class="fa fa-folder-open" aria-hidden="true"></i>
+                     7. WRITE EFFICIENT, CLEAN CODE USING OPEN SOURCE PYTHON</a></li>
+
+            
+
+<div class='active-menu'>
+      <ul>
+        
+        <!-- Note that class-order allows you to sort modules by class order if there are more than 1 in a class -->
+        
+
+        
+
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 16 Write clean expressive code  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/><!--7.1 --> - What is Clean Code</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/python-pep-8-style-guide/><!--7.2 --> - PEP 8 Style Guide</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/expressive-variable-names-make-code-easier-to-read/><!--7.3 --> - Expressive Code</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/dry-modular-code/><!--7.4 --> - DRY Modular Code</a></li>
+          
+          
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 17 Conditional statements in python  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/conditional-statements/><!--7.1 --> - Intro to Conditional Statements</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/conditional-statements/alternative-multiple-conditions/><!--7.2 --> - Alternative and Multiple Conditions</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 18 Loops in python  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/><!--7.1 --> - Introduction to Loops</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/automate-data-tasks-with-loops/><!--7.2 --> - Automate Data Tasks With Loops</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/data-workflows-with-loops/><!--7.3 --> - Create Data Workflows with Loops</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/list-comprehensions><!--7.4 --> - List Comprehensions</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/loops-exercise/><!--7.5 --> - Loops Exercise</a></li>
+          
+          
+
+        
+       </ul>
+        
+
+        
+        
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 19 Intro to functions in python  </span></li>
+        <ul>
+
+      
+      <!-- count lessons -->
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/><!--7.1 --> - Intro to Functions</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-in-python/><!--7.2 --> - Write Functions in Python</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/ class='active'> <!--7.3 -->- Write Multi-Parameter Functions in Python</a></li>
+          
+          
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+       </ul>
+        
+
+        
+      </ul>
+
+      <!-- BEGIN Learn how to lessons -->
+       <ul>
+         
+         
+       </ul>
+
+
+     </div>
+
+
+      <!-- END BEGIN Learn how to lessons -->
+
+      <!--  -->
+      
+
+    
+  </ul></li>
+ </ul>
+
+
+ <ul>
+   <li><span class="nav__sub-title"><i class="fa fa-folder-open" aria-hidden="true"></i> Overview</span>
+    <ul>
+     
+          
+         <li> <a href="http://localhost:4000/courses/intro-to-earth-data-science/">
+           Intro to Earth Data Science Home </a></li>
+         
+
+     
+   </ul>
+ </li>
+</ul>
+</nav>
+
+<h5><a href="http://localhost:4000/courses/intro-to-earth-data-science-textbook/" ><i class="fa fa-home" aria-hidden="true"></i> intro-to-earth-data-science-textbook Home</a></h5>
+
+    
+
+    
+
+  
+  </div>
+
+
+
+
+
+
+<!-- begin science / science themes side bar nav -->
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <meta itemprop="headline" content="Write Functions with Multiple Parameters in Python">
+    <meta itemprop="description" content="A function is a reusable block of code that performs a specific task. Learn how to write functions that can take multiple as well as optional parameters in Python to eliminate repetition and improve efficiency in your code.">
+    <meta itemprop="datePublished" content="November 12, 2019">
+    <meta itemprop="dateModified" content="January 28, 2021">
+
+    <div class="page__inner-wrap">
+        <header>
+          
+
+          <!-- BEGIN: insert a welcome to the module block on pages that are part of a module set -->
+
+          <!-- END: insert welcome block -->
+
+          
+              
+
+            
+                <h1 class="page__title" itemprop="headline">
+                Lesson 3. 
+                 Write Functions with Multiple Parameters in Python
+
+                
+                </h1>
+            
+
+          
+
+          
+            <div class="page__meta">
+              
+              
+              <a href="http://localhost:4000/authors/jenny-palomino">Jenny Palomino</a>, 
+              
+              
+              <a href="http://localhost:4000/authors/leah-wasser">Leah Wasser</a>
+              
+            </div>
+          
+
+            <br/>
+
+            
+
+              
+            
+
+            <!-- For tools pages add authors and tool title -->
+
+            
+        </header>
+
+
+
+      <section class="page__content" itemprop="text">
+
+        <!-- would like to include the TOC automatically but this does weird things-->
+        
+          
+            <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-file-text"></i> On This Page</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#learning-objectives" id="markdown-toc-learning-objectives"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Learning Objectives</a></li>
+  <li><a href="#how-to-define-a-function-with-multiple-parameters-in-python" id="markdown-toc-how-to-define-a-function-with-multiple-parameters-in-python">How to Define a Function with Multiple Parameters in Python</a></li>
+  <li><a href="#write-a-function-with-multiple-parameters-in-python" id="markdown-toc-write-a-function-with-multiple-parameters-in-python">Write a Function with Multiple Parameters in Python</a></li>
+  <li><a href="#call-custom-functions-with-multiple-parameters-in-python" id="markdown-toc-call-custom-functions-with-multiple-parameters-in-python">Call Custom Functions with Multiple Parameters in Python</a></li>
+  <li><a href="#combine-unit-conversion-and-calculation-of-statistics-into-one-function" id="markdown-toc-combine-unit-conversion-and-calculation-of-statistics-into-one-function">Combine Unit Conversion and Calculation of Statistics into One Function</a></li>
+  <li><a href="#define-optional-input-parameters-for-a-function" id="markdown-toc-define-optional-input-parameters-for-a-function">Define Optional Input Parameters for a Function</a></li>
+  <li><a href="#combine-download-and-import-of-data-files-into-one-function" id="markdown-toc-combine-download-and-import-of-data-files-into-one-function">Combine Download and Import of Data Files into One Function</a></li>
+  <li><a href="#practice-writing-multi-parameter-functions-for-pandas-dataframes" id="markdown-toc-practice-writing-multi-parameter-functions-for-pandas-dataframes"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Practice Writing Multi-Parameter Functions for Pandas Dataframes</a></li>
+  <li><a href="#practice-writing-multi-parameter-functions-for-numpy-arrays" id="markdown-toc-practice-writing-multi-parameter-functions-for-numpy-arrays"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Practice Writing Multi-Parameter Functions for Numpy Arrays</a></li>
+</ul>
+
+  </nav>
+</aside>
+
+<div class="notice--success">
+
+  <h2 id="learning-objectives"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Learning Objectives</h2>
+
+  <ul>
+    <li>Write and execute custom functions with multiple input parameters in <strong>Python</strong>.</li>
+    <li>Write and execute custom functions with optional input parameters in <strong>Python</strong>.</li>
+  </ul>
+
+</div>
+
+<h2 id="how-to-define-a-function-with-multiple-parameters-in-python">How to Define a Function with Multiple Parameters in Python</h2>
+
+<p>Previously in this textbook, you learned that an input parameter is the required information that you pass to the function for it to run successfully. The function will take the value or object provided as the input parameter and use it to perform some task.</p>
+
+<p>You also learned that in <strong>Python</strong>, the required parameter can be defined using a placeholder variable, such as <code class="highlighter-rouge">data</code>, which represents the value or object that will be acted upon in the function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</code></pre></div></div>
+
+<p>However, sometimes you may need additional information for the function to run successfully.</p>
+
+<p>Luckily, you can write functions that take in more than one parameter by defining as many parameters as needed, for example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">data_1</span><span class="p">,</span> <span class="n">data_2</span><span class="p">):</span>
+</code></pre></div></div>
+
+<p>When the function is called, a user can provide any value for <code class="highlighter-rouge">data_1</code> or <code class="highlighter-rouge">data_2</code> that the function can take as an input for that parameter (e.g. single value variable, list, <strong>numpy</strong> array, <strong>pandas</strong> dataframe column).</p>
+
+<h2 id="write-a-function-with-multiple-parameters-in-python">Write a Function with Multiple Parameters in Python</h2>
+
+<p>Imagine that you want to define a function that will take in two numeric values as inputs and return the product of these input values (i.e. multiply the values).</p>
+
+<p>Begin with the <code class="highlighter-rouge">def</code> keyword and the function name, just as you have before to define a function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiply_values</span>
+</code></pre></div></div>
+
+<p>Next, provide two placeholder variable names for the input parameters, as shown below.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiply_values</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+</code></pre></div></div>
+
+<p>Add the code to multiply the values and the <code class="highlighter-rouge">return</code> statement to returns the product of the two values:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiply_values</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">z</span>
+</code></pre></div></div>
+
+<p>Last, write a docstring to provide the details about this function, including a brief description of the function (i.e. how it works, purpose) as well as identify the input parameters (i.e. type, description) and the returned output (i.e. type, description).</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiply_values</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="s">"""Calculate product of two inputs. 
+    
+    Parameters
+    ----------
+    x : int or float
+    y : int or float
+
+    Returns
+    ------
+    z : int or float
+    """</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">z</span>
+</code></pre></div></div>
+
+<h2 id="call-custom-functions-with-multiple-parameters-in-python">Call Custom Functions with Multiple Parameters in Python</h2>
+
+<p>Now that you have defined the function <code class="highlighter-rouge">multiple_values()</code>, you can call it by providing values for the two input parameters.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Call function with numeric values
+</span><span class="n">multiply_values</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">25.4</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17.779999999999998
+</code></pre></div></div>
+
+<p>Recall that you can also provide pre-defined variables as inputs, for example, a value for precipitation and another value for a unit conversion value.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Average monthly precip (inches) for Jan in Boulder, CO
+</span><span class="n">precip_jan_in</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="c1"># Conversion factor from inches to millimeters
+</span><span class="n">to_mm</span> <span class="o">=</span> <span class="mf">25.4</span>
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Call function with pre-defined variables
+</span><span class="n">precip_jan_mm</span> <span class="o">=</span> <span class="n">multiply_values</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">precip_jan_in</span><span class="p">,</span> 
+    <span class="n">y</span> <span class="o">=</span> <span class="n">to_mm</span><span class="p">)</span>
+
+<span class="n">precip_jan_mm</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>17.779999999999998
+</code></pre></div></div>
+
+<p>Note that the function is not defined specifically for unit conversions, but as it completes a generalizable task, it can be used for simple unit conversions.</p>
+
+<h2 id="combine-unit-conversion-and-calculation-of-statistics-into-one-function">Combine Unit Conversion and Calculation of Statistics into One Function</h2>
+
+<p>Now imagine that you want to both convert the units of a <strong>numpy</strong> array from millimeters to inches and calculate the mean value along a specified axis for either columns or rows.</p>
+
+<p>Recall the function definition that you previously wrote to convert values from millimeters to inches:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mm_to_in</span><span class="p">(</span><span class="n">mm</span><span class="p">):</span>
+    <span class="s">"""Convert input from millimeters to inches. 
+    
+    Parameters
+    ----------
+    mm : int or float
+        Numeric value with units in millimeters.
+
+    Returns
+    ------
+    inches : int or float
+        Numeric value with units in inches.
+    """</span>
+    <span class="n">inches</span> <span class="o">=</span> <span class="n">mm</span> <span class="o">/</span> <span class="mf">25.4</span>    
+    <span class="k">return</span> <span class="n">inches</span>
+</code></pre></div></div>
+
+<p>You can expand this function to include running a mean along a specified axis for columns or rows, and then use this function over and over on many <strong>numpy</strong> arrays as needed.</p>
+
+<p>This new function can have descriptive names for the function and the input parameters that describe more clearly what the function accomplishes.</p>
+
+<p>Begin by defining the function with a descriptive name and the two necessary parameters:</p>
+<ul>
+  <li>the input array with values in millimeters</li>
+  <li>the axis value for the mean calculation</li>
+</ul>
+
+<p>Use placeholder variable names that highlight the purpose of each parameter:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="p">):</span>
+</code></pre></div></div>
+
+<p>Next, add the code to first calculate the mean of the input array along a specified axis, and then to convert the mean values from millimeters to inches.</p>
+
+<p>First, add the code line to calculate a mean along a specified axis.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="p">):</span>
+    <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span>    
+</code></pre></div></div>
+
+<p>Next, add the code line to convert the mean array from millimeters to inches. In this case, the <code class="highlighter-rouge">return</code> statement should return the mean array in inches.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="p">):</span>
+    <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span>
+    <span class="n">mean_arr_in</span> <span class="o">=</span> <span class="n">mean_arr_mm</span> <span class="o">/</span> <span class="mf">25.4</span> 
+        
+    <span class="k">return</span> <span class="n">mean_arr_in</span>
+    
+</code></pre></div></div>
+
+<p>Note that the function could be written to convert the values first and then calculate the mean. However, given that the function will complete both tasks and return the mean values in the desired units, it is more efficient to calculate the mean values first and then convert just those values, rather than converting all of the values in the input array.</p>
+
+<p>Last, include a docstring to provide the details about this function, including a brief description of the function (i.e. how it works, purpose) as well as identify the input parameters (i.e. type, description) and the returned output (i.e. type, description).</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="p">):</span>
+    <span class="s">"""Calculate mean values of input array along a specified
+    axis and convert values from millimeters to inches.
+    
+    Parameters
+    ----------
+    arr_mm : numpy array
+        Numeric values in millimeters.
+    axis_value : int
+        0 to calculate mean for each column.
+        1 to calculate mean for each row.
+
+    Returns
+    ------
+    mean_arr_in : numpy array
+        Mean values of input array in inches.
+    """</span>    
+    <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span>
+    <span class="n">mean_arr_in</span> <span class="o">=</span> <span class="n">mean_arr_mm</span> <span class="o">/</span> <span class="mf">25.4</span> 
+        
+    <span class="k">return</span> <span class="n">mean_arr_in</span>
+</code></pre></div></div>
+
+<p>Now that you have defined <code class="highlighter-rouge">mean_mm_to_in_arr()</code>, you can call the function with the appropriate input parameters.</p>
+
+<p>Create some data and test your new function with different input values for the <code class="highlighter-rouge">axis_value</code> parameter.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import necessary package to run function
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2d array of average monthly precip (mm) for 2002 and 2013 in Boulder, CO
+</span><span class="n">precip_2002_2013_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">27.178</span><span class="p">,</span> <span class="mf">11.176</span><span class="p">,</span> <span class="mf">38.1</span><span class="p">,</span> <span class="mf">5.08</span><span class="p">,</span> <span class="mf">81.28</span><span class="p">,</span> <span class="mf">29.972</span><span class="p">,</span> 
+                                 <span class="mf">2.286</span><span class="p">,</span> <span class="mf">36.576</span><span class="p">,</span> <span class="mf">38.608</span><span class="p">,</span> <span class="mf">61.976</span><span class="p">,</span> <span class="mf">19.812</span><span class="p">,</span> <span class="mf">0.508</span><span class="p">],</span>
+                                <span class="p">[</span><span class="mf">6.858</span><span class="p">,</span> <span class="mf">28.702</span><span class="p">,</span> <span class="mf">43.688</span><span class="p">,</span> <span class="mf">105.156</span><span class="p">,</span> <span class="mf">67.564</span><span class="p">,</span> <span class="mf">15.494</span><span class="p">,</span>  
+                                 <span class="mf">26.162</span><span class="p">,</span> <span class="mf">35.56</span> <span class="p">,</span> <span class="mf">461.264</span><span class="p">,</span> <span class="mf">56.896</span><span class="p">,</span> <span class="mf">7.366</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">]</span>
+                               <span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculate monthly mean (inches) for precip_2002_2013
+</span><span class="n">monthly_mean_in</span> <span class="o">=</span> <span class="n">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span> <span class="o">=</span> <span class="n">precip_2002_2013_mm</span><span class="p">,</span> 
+                                    <span class="n">axis_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">monthly_mean_in</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.67 , 0.785, 1.61 , 2.17 , 2.93 , 0.895, 0.56 , 1.42 , 9.84 ,
+       2.34 , 0.535, 0.26 ])
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculate yearly mean (inches) for precip_2002_2013
+</span><span class="n">yearly_mean_in</span> <span class="o">=</span> <span class="n">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span> <span class="o">=</span> <span class="n">precip_2002_2013_mm</span><span class="p">,</span> 
+                                   <span class="n">axis_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">yearly_mean_in</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([1.15666667, 2.84583333])
+</code></pre></div></div>
+
+<h2 id="define-optional-input-parameters-for-a-function">Define Optional Input Parameters for a Function</h2>
+
+<p>Your previously defined function works well if you want to use a specified axis for the mean.</p>
+
+<p>However, notice what happens when you try to call the function without providing an axis value, such as for a one-dimensional array.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1d array of average monthly precip (mm) for 2002 in Boulder, CO
+</span><span class="n">precip_2002_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">27.178</span><span class="p">,</span> <span class="mf">11.176</span><span class="p">,</span> <span class="mf">38.1</span><span class="p">,</span>  <span class="mf">5.08</span><span class="p">,</span> <span class="mf">81.28</span><span class="p">,</span> <span class="mf">29.972</span><span class="p">,</span>  
+                           <span class="mf">2.286</span><span class="p">,</span> <span class="mf">36.576</span><span class="p">,</span> <span class="mf">38.608</span><span class="p">,</span> <span class="mf">61.976</span><span class="p">,</span> <span class="mf">19.812</span><span class="p">,</span> <span class="mf">0.508</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculate mean (inches) for precip_2002
+</span><span class="n">monthly_mean_in</span> <span class="o">=</span> <span class="n">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span> <span class="o">=</span> <span class="n">precip_2002_mm</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You get an error that the <code class="highlighter-rouge">axis_value</code> is missing:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">TypeError</span><span class="p">:</span> <span class="n">mean_mm_to_in_arr</span><span class="p">()</span> <span class="n">missing</span> <span class="mi">1</span> <span class="n">required</span> <span class="n">positional</span> <span class="n">argument</span><span class="p">:</span> <span class="s">'axis_value'</span>
+</code></pre></div></div>
+
+<p>What if you want to make the function more generalizable, so that the axis value is optional?</p>
+
+<p>You can do that by specifying a default value for <code class="highlighter-rouge">axis_value</code> as <code class="highlighter-rouge">None</code> as shown below:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</code></pre></div></div>
+
+<p>The function will assume that the axis value is <code class="highlighter-rouge">None</code> (i.e. that an input value has not been provided by the user), unless specified otherwise in the function call.</p>
+
+<p>However, as written, the original function code uses the axis value to calculate the mean, so you need to make a few more changes, so that the mean code runs with an axis value if a value is provided or runs without an axis value if one is not provided.</p>
+
+<p>Luckily, you have already learned about conditional statements, which you can now add to your function to run the mean code with or without an axis value as needed.</p>
+
+<p>Using a conditional statement, you can check if <code class="highlighter-rouge">axis_value</code> is equal to <code class="highlighter-rouge">None</code>, in which case the mean code will run without an axis value.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">axis_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">else</code> statement would mean that <code class="highlighter-rouge">axis_value</code> is not equal to <code class="highlighter-rouge">None</code> (i.e. a user has provided an input value) and thus would run the mean code with the specified axis value.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">axis_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">)</span>        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The code for the unit conversion and the <code class="highlighter-rouge">return</code> remain the same, just with updated names:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">axis_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">)</span>        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span>
+    
+    <span class="n">mean_arr_in</span> <span class="o">=</span> <span class="n">mean_arr_mm</span> <span class="o">/</span> <span class="mf">25.4</span> 
+        
+    <span class="k">return</span> <span class="n">mean_arr_in</span>
+</code></pre></div></div>
+
+<p>Last, include a docstring to provide the details about this revised function. Notice that the axis value has been labeled optional in the docstring.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis_value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="s">"""Calculate mean values of input array and convert values 
+    from millimeters to inches. If an axis is specified,
+    the mean will be calculated along that axis. 
+
+    
+    Parameters
+    ----------
+    arr_mm : numpy array
+        Numeric values in millimeters.
+    axis_value : int (optional)
+        0 to calculate mean for each column.
+        1 to calculate mean for each row.
+
+    Returns
+    ------
+    mean_arr_in : numpy array
+        Mean values of input array in inches.
+    """</span>   
+    <span class="k">if</span> <span class="n">axis_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">)</span>        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mean_arr_mm</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr_mm</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span>
+    
+    <span class="n">mean_arr_in</span> <span class="o">=</span> <span class="n">mean_arr_mm</span> <span class="o">/</span> <span class="mf">25.4</span> 
+        
+    <span class="k">return</span> <span class="n">mean_arr_in</span>
+</code></pre></div></div>
+
+<p>Notice that the function will return the same output as before for the two-dimensional array <code class="highlighter-rouge">precip_2002_2013_mm</code>.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculate monthly mean (inches) for precip_2002_2013
+</span><span class="n">monthly_mean_in</span> <span class="o">=</span> <span class="n">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span> <span class="o">=</span> <span class="n">precip_2002_2013_mm</span><span class="p">,</span> 
+                                    <span class="n">axis_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">monthly_mean_in</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([0.67 , 0.785, 1.61 , 2.17 , 2.93 , 0.895, 0.56 , 1.42 , 9.84 ,
+       2.34 , 0.535, 0.26 ])
+</code></pre></div></div>
+
+<p>However, now you can also provide a one-dimensional array as an input without a specified axis and receive the appropriate output.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Calculate mean (inches) for precip_2002
+</span><span class="n">monthly_mean_in</span> <span class="o">=</span> <span class="n">mean_mm_to_in_arr</span><span class="p">(</span><span class="n">arr_mm</span> <span class="o">=</span> <span class="n">precip_2002_mm</span><span class="p">)</span>
+
+<span class="n">monthly_mean_in</span>
+</code></pre></div></div>
+
+<div class="output execute_result highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.1566666666666667
+</code></pre></div></div>
+
+<h2 id="combine-download-and-import-of-data-files-into-one-function">Combine Download and Import of Data Files into One Function</h2>
+
+<p>You can also write multi-parameter functions to combine other tasks into one function, such as downloading and importing data files into a <strong>pandas</strong> dataframe.</p>
+
+<p>Think about the code that you need to include in the function:</p>
+<ol>
+  <li>download data file from URL: <code class="highlighter-rouge">et.data.get_data(url=file_url)</code></li>
+  <li>import data file into <strong>pandas</strong> dataframe: <code class="highlighter-rouge">pd.read_csv(path)</code></li>
+</ol>
+
+<p>From this code, you can see that you will need two input parameters for the combined function:</p>
+<ol>
+  <li>the URL to the data file</li>
+  <li>the path to the downloaded file</li>
+</ol>
+
+<p>Begin by specifying a function name and the placeholder variable names for the necessary input parameters.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">download_import_df</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>  
+</code></pre></div></div>
+
+<p>Next, add the code for download and the import.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">download_import_df</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>  
+    <span class="n">et</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">file_url</span><span class="p">)</span>  
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>However, what if the working directory has not been set before this function is called, and you do not want to use absolute paths?</p>
+
+<p>Since you know that the <code class="highlighter-rouge">get_data()</code> function creates the <code class="highlighter-rouge">earth-analytics</code> directory under the home directory if it does not already exist, you can safely assume that this combined function will also create that directory.</p>
+
+<p>As such, you can include setting the working directory in the function, so that you do not have to worry about providing absolute paths to the function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">download_import_df</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>    
+    
+    <span class="n">et</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">file_url</span><span class="p">)</span>      
+    <span class="n">os</span><span class="p">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">et</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">HOME</span><span class="p">,</span> <span class="s">"earth-analytics"</span><span class="p">))</span>    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></div>
+
+<p>Last, include a docstring to provide the details about this function, including a brief description of the function (i.e. how it works, purpose) as well as identify the input parameters (i.e. type, description) and the returned output (i.e. type, description).</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">download_import_df</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>   
+    <span class="s">"""Download file from specified URL and import file
+    into a pandas dataframe from a specified path. 
+    
+    Working directory is set to earth-analytics directory 
+    under home, which is automatically created by the
+    download. 
+
+    
+    Parameters
+    ----------
+    file_url : str
+        URL to CSV file (http or https).
+    path : str
+        Path to CSV file using relative path
+        to earth-analytics directory under home.        
+
+    Returns
+    ------
+    df : pandas dataframe
+        Dataframe imported from downloaded CSV file.
+    """</span> 
+    
+    <span class="n">et</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">file_url</span><span class="p">)</span>      
+    <span class="n">os</span><span class="p">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">et</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">HOME</span><span class="p">,</span> <span class="s">"earth-analytics"</span><span class="p">))</span>    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></div>
+
+<p>Now that you have defined the function, you can import the packages needed to run the function and define the variables that you will use as input parameters.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Import necessary packages to run function
+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">earthpy</span> <span class="k">as</span> <span class="n">et</span>
+</code></pre></div></div>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># URL for average monthly precip (inches) for 2002 and 2013 in Boulder, CO
+</span><span class="n">precip_2002_2013_df_url</span> <span class="o">=</span> <span class="s">"https://ndownloader.figshare.com/files/12710621"</span>
+
+<span class="c1"># Path to downloaded .csv file with headers
+</span><span class="n">precip_2002_2013_df_path</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"data"</span><span class="p">,</span> <span class="s">"earthpy-downloads"</span><span class="p">,</span> 
+                                        <span class="s">"precip-2002-2013-months-seasons.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Using these variables, you can now call the function to download and import the file into a <strong>pandas</strong> dataframe.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create dataframe using download/import function
+</span><span class="n">precip_2002_2013_df</span> <span class="o">=</span> <span class="n">download_import_df</span><span class="p">(</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">precip_2002_2013_df_url</span><span class="p">,</span> 
+    <span class="n">path</span> <span class="o">=</span> <span class="n">precip_2002_2013_df_path</span><span class="p">)</span>
+
+<span class="n">precip_2002_2013_df</span>
+</code></pre></div></div>
+
+<div class="output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Downloading from https://ndownloader.figshare.com/files/12710621
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip_2002</th>
+      <th>precip_2013</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>1.07</td>
+      <td>0.27</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Feb</td>
+      <td>0.44</td>
+      <td>1.13</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.50</td>
+      <td>1.72</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>0.20</td>
+      <td>4.14</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.20</td>
+      <td>2.66</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>1.18</td>
+      <td>0.61</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>July</td>
+      <td>0.09</td>
+      <td>1.03</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Aug</td>
+      <td>1.44</td>
+      <td>1.40</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Sept</td>
+      <td>1.52</td>
+      <td>18.16</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oct</td>
+      <td>2.44</td>
+      <td>2.24</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Nov</td>
+      <td>0.78</td>
+      <td>0.29</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Dec</td>
+      <td>0.02</td>
+      <td>0.50</td>
+      <td>Winter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="making-functions-more-efficient-does-not-always-mean-more-parameters">Making Functions More Efficient Does Not Always Mean More Parameters</h3>
+
+<p>Note that you previously defined <code class="highlighter-rouge">download_import_df()</code> to take in two parameters, one for the URL and for the path, and the function works well to accomplish the task.</p>
+
+<p>However, with a little investigation into the <code class="highlighter-rouge">et.data.get_data()</code> function, you can see that the output of that function is actually a path to the downloaded file!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">help</span><span class="p">(</span><span class="n">et</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">)</span>
+</code></pre></div></div>
+<p>In the docstring details provided, you can see that the full path to the downloaded data is returned by the function:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Returns
+-------
+path_data : str
+    The path to the downloaded data.
+</code></pre></div></div>
+
+<p>This means that you can redefine <code class="highlighter-rouge">download_import_df()</code> to be more efficient by simply using the output of the <code class="highlighter-rouge">et.data.get_data()</code> function as the input to the <code class="highlighter-rouge">pd.read_csv()</code> function.</p>
+
+<p>Now, you actually only need one parameter for the URL and you do not have to define the working directory in the function, in order to find the appropriate file.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">download_import_df</span><span class="p">(</span><span class="n">file_url</span><span class="p">):</span>   
+    <span class="s">"""Download file from specified URL and import file
+    into a pandas dataframe. 
+    
+    The path to the downloaded file is automatically 
+    generated by the download and is passed to the 
+    pandas function to create a new dataframe. 
+    
+    Parameters
+    ----------
+    file_url : str
+        URL to CSV file (http or https).       
+
+    Returns
+    ------
+    df : pandas dataframe
+        Dataframe imported from downloaded CSV file.
+    """</span> 
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">et</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">file_url</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></div>
+
+<p>Your revised function now executes only one line, rather than three lines! Note that the docstring was also updated to reflect that there is only one input parameter for this function.</p>
+
+<p>Now you can call the function with just a single parameter for the URL.</p>
+
+<div class="language-python input highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create dataframe using download/import function
+</span><span class="n">precip_2002_2013_df</span> <span class="o">=</span> <span class="n">download_import_df</span><span class="p">(</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">precip_2002_2013_df_url</span><span class="p">)</span>
+
+<span class="n">precip_2002_2013_df</span>
+</code></pre></div></div>
+
+<div class="output execute_result">
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>months</th>
+      <th>precip_2002</th>
+      <th>precip_2013</th>
+      <th>seasons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>1.07</td>
+      <td>0.27</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Feb</td>
+      <td>0.44</td>
+      <td>1.13</td>
+      <td>Winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar</td>
+      <td>1.50</td>
+      <td>1.72</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr</td>
+      <td>0.20</td>
+      <td>4.14</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May</td>
+      <td>3.20</td>
+      <td>2.66</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>June</td>
+      <td>1.18</td>
+      <td>0.61</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>July</td>
+      <td>0.09</td>
+      <td>1.03</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Aug</td>
+      <td>1.44</td>
+      <td>1.40</td>
+      <td>Summer</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Sept</td>
+      <td>1.52</td>
+      <td>18.16</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Oct</td>
+      <td>2.44</td>
+      <td>2.24</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Nov</td>
+      <td>0.78</td>
+      <td>0.29</td>
+      <td>Fall</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Dec</td>
+      <td>0.02</td>
+      <td>0.50</td>
+      <td>Winter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="notice--warning">
+
+  <h2 id="practice-writing-multi-parameter-functions-for-pandas-dataframes"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Practice Writing Multi-Parameter Functions for Pandas Dataframes</h2>
+
+  <p>You have a function that combines the mean calculation along a specified axis and the conversion from millimeters to inches for a <strong>numpy</strong> array.</p>
+
+  <p>How might you need to change this function to create a similar function for <strong>pandas</strong> dataframe, but now converting from inches to millimeters?</p>
+
+  <p>For the mean, you can run summary statistics on pandas using a specified axis (just like a <strong>numpy</strong> array) with the following code:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="n">axis_value</span><span class="p">)</span> 
+</code></pre></div>  </div>
+
+  <p>With the axis value <code class="highlighter-rouge">0</code>, the code will calculate a mean for each numeric column in the dataframe.</p>
+
+  <p>With the axis value <code class="highlighter-rouge">1</code>, the code will calculate a mean for each row with numeric values in the dataframe.</p>
+
+  <p>Think about which code lines in the existing function <code class="highlighter-rouge">mean_mm_to_in_arr()</code> can be modified to run the equivalent code on a <strong>pandas</strong> dataframe.</p>
+
+  <p>Note that the <code class="highlighter-rouge">df.mean(axis = axis_value)</code> returns the mean values of a dataframe (along the specified axis) as a <strong>pandas</strong> series.</p>
+
+</div>
+
+<div class="notice--warning">
+
+  <h2 id="practice-writing-multi-parameter-functions-for-numpy-arrays"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Practice Writing Multi-Parameter Functions for Numpy Arrays</h2>
+
+  <p>You also have a function that combines the data download and import for a <strong>pandas</strong> dataframe, you can modify the function for other data structures such as a <strong>numpy</strong> array.</p>
+
+  <p>How might you need to change this function to create an equivalent for <strong>numpy</strong> arrays?</p>
+
+  <p>Think about which code lines in the existing function <code class="highlighter-rouge">download_import_df()</code> can be modified to write a new function that downloads and imports data into a <strong>numpy</strong> array.</p>
+
+  <p>To begin, you may want to write one function for a 1-dimensional array and another function for a 2-dimensional array.</p>
+
+  <p>To advance in your practice, you can think about adding a conditional statement that would check for the file type (.txt for a 1-dimensional array .csv for a 2-dimensional array) before executing the appropriate import code.</p>
+
+</div>
+
+          
+
+        
+
+        <!-- if the page is a course lesson, add pagination -->
+
+        
+         <!-- This is clunky code that forces pagination across lesson sets -->
+<!-- NOTE: it won't include slideshows as written which makes sense -->
+<!-- add forced pagination -->
+<!-- first, get total lesson count -->
+
+<div class="previous--next">
+
+
+
+
+
+<!-- if it's page one - then no previous button -->
+<!-- how do i figure out the link? i have to loop through again? -->
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+        <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-in-python/" class="btn btn--info btn--large btn-success">
+          <i class="fa fa-4 fa-arrow-circle-left fa-4" aria-hidden="true"></i>
+          Write Functions in Python </a>
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+
+    
+      
+
+      
+      
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+    
+  
+  <!-- ELSE if it's a module -->
+  
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+
+  <!-- ELSE if it's a module -->
+  
+      
+    
+
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags
+  
+  <span class="a-main-tag">
+  <i class="fa fa-fw fa-tag" aria-hidden="true"></i><a href=http://localhost:4000/tags/reproducible-science-and-programming/>Reproducible science and programming</a>:
+  </span>
+  
+    
+    <a href=http://localhost:4000/tags/reproducible-science-and-programming/python/>python</a> 
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-01-28">January 28, 2021</time></p>
+        
+        <!-- Add license information w/ DOI to the bottom -->
+        
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+      </footer>
+
+      
+
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/write-functions-with-multiple-and-optional-parameters-in-python/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+<br><br>
+  <a href="http://bit.ly/2jc5SXy" target="_blank">
+    <img src="http://localhost:4000/images/earth-data-analytics-professional-certificate-banner.png" alt="Get a professional Certificate in Earth Data Analytics at University of Colorado, Boulder" width="40%"></a>
+</section>
+
+
+       
+    </div>
+
+    
+      
+
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/earth-analytics-bootcamp/plot-data-python">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Plot Data With Matplotlib
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  1 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">
+
+     This Week
+
+  
+
+
+</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/summarize-climate-data-by-season/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Calculate Seasonal Summary Values from Climate Data Variables Stored in NetCDF 4 Format: Work With MACA v2 Climate Data in Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  25 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Learn how to calculate seasonal summary values for MACA 2 climate data using xarray and region mask in open source Python.
+</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/subset-netcdf4-climate-data-spatially-aoi/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Calculate Summary Values Using Spatial Areas of Interest (AOIs) including Shapefiles for Climate Data Variables Stored in NetCDF 4 Format: Work With MACA v2 Climate Data in Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  33 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Climate datasets stored in netcdf 4 format often cover the entire globe or an entire country. Learn how to subset climate data spatially and by time slices u...</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/use-netcdf-in-python-xarray/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">How to Open and Process NetCDF 4 Data Format in Open Source Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  26 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Historic and projected climate data are most often stored in netcdf 4 format. Learn how to open and process MACA version 2 climate data for the Continental U...</p>
+    </article>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+
+
+<!-- Adding analytics code -->
+
+        
+
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    <li>
+      <strong>&copy; 2021 Earth Lab -
+      <a href="http://localhost:4000/license"> All materials on this site
+        are subject to the CC BY-NC-ND 4.0 License. </a>
+      </strong>
+    </li>
+  </ul>
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/earthlabcu"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/earthlab"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<!--
+<div class="page__footer-copyright">Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+-->
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'earthlabcu';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+<script type="text/javascript"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-84081999-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+</html>
+

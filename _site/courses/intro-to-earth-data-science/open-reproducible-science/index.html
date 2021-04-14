@@ -35,8 +35,8 @@
 <meta property="og:title" content="Introduction to Open Reproducible Science Workflows">
 
 
-  <link rel="canonical" href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/">
-  <meta property="og:url" content="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/">
+  <link rel="canonical" href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/">
+  <meta property="og:url" content="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/">
 
 
 
@@ -49,7 +49,7 @@
   <meta name="twitter:site" content="@earthlabcu">
   <meta name="twitter:title" content="Introduction to Open Reproducible Science Workflows">
   <meta name="twitter:description" content="     Section One  ">
-  <meta name="twitter:url" content="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/">
+  <meta name="twitter:url" content="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/">
 
   
     <meta name="twitter:card" content="summary">
@@ -74,10 +74,10 @@
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2019-07-01T00:00:00-06:00">
   
-    <link rel="next" href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/" title="What Is Open Reproducible Science">
+    <link rel="next" href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/" title="What Is Open Reproducible Science">
   
   
-    <link rel="prev" href="http://localhost:8000/blog/four-skills-earth-data-science/" title="Four Must-Have Skills in Earth Data Science">
+    <link rel="prev" href="http://localhost:4000/blog/four-skills-earth-data-science/" title="Four Must-Have Skills in Earth Data Science">
   
 
 
@@ -89,7 +89,7 @@
       "@context" : "http://schema.org",
       "@type" : "Person",
       "name" : "Earth Analytics",
-      "url" : "http://localhost:8000",
+      "url" : "http://localhost:4000",
       "sameAs" : null
     }
   </script>
@@ -102,7 +102,7 @@
 <!-- end SEO -->
 
 
-<link href="http://localhost:8000/feed.xml" type="application/atom+xml" rel="alternate" title="Earth Data Science - Earth Lab Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Earth Data Science - Earth Lab Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -118,8 +118,8 @@
 
 
 <!-- For all browsers
-<link rel="stylesheet" href="http://localhost:8000/assets/css/main.css">-->
-<link rel="stylesheet" href="http://localhost:8000/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">-->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
 
@@ -128,6 +128,12 @@
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
 
 <!-- end custom head snippets -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+    <script src="http://localhost:4000/assets/js/copy-code.js"></script>
   </head>
 
   <body>
@@ -141,7 +147,7 @@
 <!-- search bar begin  - turning off for now-->
 
 <div class="search">
-<form role="search" method="get" action="http://localhost:8000/search/">
+<form role="search" method="get" action="http://localhost:4000/search/">
     <input id="q" name="q"
            placeholder="Search earth data science site" type="text">
 </form>
@@ -157,28 +163,25 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:8000/"><img src="/images/earth_sm.png" alt="Earth Lab - Earth Data Science" style="height:80%;width:85%"></a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><img src="/images/earth-lab-logo.png" alt="Earth Lab - Earth Data Science" style="height:80%;width:85%"></a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:8000/tutorials/">Tutorials</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tutorials/">Tutorials</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:8000/courses/">Courses</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/courses/">Courses</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:8000/workshops/">Workshops</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/workshops/">Workshops</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:8000/tools/">Tools</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/tools/">Tools</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:8000/blog/">Blog</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:8000/events/">Events</a></li>
-          
-            
-            <li class="masthead__menu-item"><a href="http://localhost:8000/about/">About</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
           
 
         </ul>
@@ -193,9 +196,14 @@
 
 
 
-
-
-
+  <div class="page__hero--overlay" style=" background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://localhost:4000/images/header-images/earth-data-analytics-professional-certificate-banner.jpg');">
+  <div class="wrapper">
+        <h1 class="page__title" itemprop="headline">
+          Earth Data Analytics Online Certificate
+        </h1>
+        <p><a href="http://bit.ly/2jc5SXy" target = "_blank" class="btn btn--light-outline btn--large">Enroll now! Learn more.</a></p>
+  </div>
+</div>
 
 
 
@@ -203,6 +211,9 @@
 
   
     
+
+
+
 
 
 
@@ -215,26 +226,31 @@
 
 <nav class="breadcrumbs" role="menubar" aria-label="breadcrumbs">
  <ol itemscope itemtype="http://schema.org/BreadcrumbList">
-<a href="http://localhost:8000"></a>
+ <a href="http://localhost:4000"></a>
+ 
  
  <!-- there is an offset of 1 so subtract 2 from the final crumb number-->
  
    
    
      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-       <a href="http://localhost:8000/" itemprop="item"><span itemprop="name">Home</span></a>
-       <meta itemprop="position" content="" />
+       <a href="http://localhost:4000/" itemprop="item"><span itemprop="name">Home</span></a>
+       <meta itemprop="position" content="1" />
      </li>
      <span class="sep">/</span>
    
     
-        <li><a href="http://localhost:8000/courses/">Courses </a>
+        
+        <li><a href="http://localhost:4000/courses/">Courses </a>
+        <meta itemprop="position" content="2" />
         <span class="sep">/</span></li>
     
   
    
     
-        <li><a href="http://localhost:8000/courses/intro-to-earth-data-science/"> Intro to earth data science </a>
+        
+        <li><a href="http://localhost:4000/courses/intro-to-earth-data-science/">Intro to earth data science </a>
+        <meta itemprop="position" content="3" />
         <span class="sep">/</span></li>
     
   
@@ -245,6 +261,11 @@
   
 </ol>
 </nav>
+
+<!-- from min mistakes -->
+
+
+
 
   
 
@@ -275,6 +296,8 @@
 
 
 
+
+
 <!-- make sure we're only grabbing pages for the course -->
 
 
@@ -289,7 +312,7 @@
 
 
 
-<h5><a href="http://localhost:8000/courses/intro-to-earth-data-science/" ><i class="fa fa-home" aria-hidden="true"></i> Intro-to-earth-data-science Home</a></h5>
+<h5><a href="http://localhost:4000/courses/intro-to-earth-data-science-textbook/" ><i class="fa fa-home" aria-hidden="true"></i> Intro to earth data science textbook</a></h5>
 
 <!-- Just get the pages from this course -->
 
@@ -305,20 +328,25 @@
 
 
 
+
 <ul>
   <li><span class="nav__sub-title"><i class="fa fa-book" aria-hidden="true"></i> Units</span>
    <ul>
-    
 
-    <!-- Only list the week if it's not the week for the current landing page -->
-    
-
-
-      
        
-      <li> <a href="http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/" class='active'> <!--<i class="fa fa-folder-open" aria-hidden="true"></i> -->
-         1. INTRODUCTION TO OPEN REPRODUCIBLE SCIENCE WORKFLOWS</a></li>
+
         
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+                
+                    <li>  <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/" class='active'> SECTION 1<br><!--<i class="fa fa-folder-open" aria-hidden="true"></i> -->
+                          INTRODUCTION TO OPEN REPRODUCIBLE SCIENCE WORKFLOWS</a></li>
+                
 
 <div class='active-menu'>
       <ul>
@@ -332,7 +360,9 @@
 
         
         
-          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i> Open reproducible science workflows </span></li>
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 1 Open reproducible science workflows  </span></li>
         <ul>
 
       
@@ -354,7 +384,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/><!--1.1 --> - About Open Science</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/><!--1.1 --> - About Open Science</a></li>
           
           
 
@@ -370,23 +400,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/open-science-tools-git-bash-jupyter/><!--1.2 --> - Open Science Tools</a></li>
-          
-          
-
-        
-        
-        
-
-        
-        
-        
-
-        
-        
-        
-          
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/best-practices-for-organizing-open-reproducible-science/><!--1.3 --> - Project Management Best Practices</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/open-science-tools-git-bash-jupyter/><!--1.2 --> - Open Science Tools</a></li>
           
           
 
@@ -398,9 +412,13 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/introduction-to-python-conda-environments/><!--1.4 --> - Conda Environments</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/best-practices-for-organizing-open-reproducible-science/><!--1.3 --> - Project Management Best Practices</a></li>
           
           
+
+        
+        
+        
 
         
         
@@ -416,7 +434,9 @@
 
         
         
-          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i> Use bash to manipulate files </span></li>
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 2 Use bash to manipulate files  </span></li>
         <ul>
 
       
@@ -434,7 +454,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/><!--1.1 --> - Introduction to Bash</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/bash/><!--1.1 --> - Introduction to Bash</a></li>
           
           
 
@@ -450,25 +470,13 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/directories/><!--1.2 --> - Computer Directories</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/bash/bash-commands-to-manage-directories-files/><!--1.2 --> - Bash Commands</a></li>
           
           
 
         
         
         
-
-        
-        
-        
-
-        
-        
-        
-          
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/bash/bash-commands-to-manage-directories-files/><!--1.3 --> - Bash Commands</a></li>
-          
-          
 
         
         
@@ -496,7 +504,9 @@
 
         
         
-          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i> Jupyter for python </span></li>
+        <!-- If it's a textbook with a chapter number write "chapter", else assume it is a week -->
+
+          <li><span class="nav__sub-title grey"><i class="fa fa-caret-down" aria-hidden="true"></i>   Chapter 3 Jupyter for python  </span></li>
         <ul>
 
       
@@ -510,7 +520,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/><!--1.1 --> - Intro to Jupyter</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/><!--1.1 --> - Intro to Jupyter</a></li>
           
           
 
@@ -526,7 +536,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/get-started-with-jupyter-notebook-for-python/><!--1.2 --> - Jupyter Notebook For Python</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/get-started-with-jupyter-notebook-for-python/><!--1.2 --> - Jupyter Notebook For Python</a></li>
           
           
 
@@ -542,23 +552,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/code-markdown-cells-in-jupyter-notebook/><!--1.3 --> - Code and Markdown Cells</a></li>
-          
-          
-
-        
-        
-        
-
-        
-        
-        
-
-        
-        
-        
-          
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/manage-directories-jupyter-dashboard/><!--1.4 --> - Manage Directories Using Dashboard</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/code-markdown-cells-in-jupyter-notebook/><!--1.3 --> - Code and Markdown Cells</a></li>
           
           
 
@@ -570,7 +564,7 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/manage-jupyter-notebook-files/><!--1.5 --> - Manage Jupyter Notebooks</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/manage-directories-jupyter-dashboard/><!--1.4 --> - Manage Directories Using Dashboard</a></li>
           
           
 
@@ -578,7 +572,15 @@
         
         
           
-          <li><a href= http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/jupyter-notebook-shortcuts/><!--1.6 --> - Jupyter Notebook Shortcuts</a></li>
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/manage-jupyter-notebook-files/><!--1.5 --> - Manage Jupyter Notebooks</a></li>
+          
+          
+
+        
+        
+        
+          
+          <li><a href= http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/jupyter-notebook-shortcuts/><!--1.6 --> - Jupyter Notebook Shortcuts</a></li>
           
           
 
@@ -606,14 +608,320 @@
 
     
 
-    <!-- Only list the week if it's not the week for the current landing page -->
-    
-    <li> <a href="http://localhost:8000/courses/intro-to-earth-data-science/file-formats/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
-       2. File Formats for Earth Data Science</a></li>
-    
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 2 <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 FILE FORMATS FOR EARTH DATA SCIENCE</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/use-text-files/"> Chapter 4:   Text File Formats </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/file-formats/use-spatial-data/"> Chapter 5:   Spatial Data Formats </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
 
 
-      
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 3 <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 GIT AND GITHUB</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/version-control/"> Chapter 7:   Git/GitHub For Version Control </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/git-github/github-collaboration/"> Chapter 8:   GitHub for Collaboration </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 4 <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 PYTHON CODE FUNDAMENTALS</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/get-started-using-python/"> Chapter 10:   Get Started with Python Variables and Lists </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/use-python-packages/"> Chapter 11:   Use Python Packages </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/"> Chapter 12:   Files, Directories & Paths </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 6 <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 SCIENTIFIC DATA STRUCTURES IN PYTHON</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/numpy-arrays/"> Chapter 14:   Numpy Arrays </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/scientific-data-structures-python/pandas-dataframes/"> Chapter 15:   Pandas Dataframes </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
+
+    
+
+            <!-- Only list the week if it's not the week for the current landing page -->
+            
+                <li> <b>SECTION 7 <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/"> <!--<i class="fa fa-folder-o" aria-hidden="true"></i>-->
+                 WRITE EFFICIENT, CLEAN CODE USING OPEN SOURCE PYTHON</a></b>
+                </li>
+
+                    <!-- list the chapters for each section  updating this to show a chapter number if it's a textbook-->
+                    
+                     <ul>
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/intro-to-clean-code/"> Chapter 16:   Write Clean Expressive Code </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/conditional-statements/"> Chapter 17:   Conditional Statements in Python </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/loops/"> Chapter 18:   Loops in Python </a>
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <li>
+                                    <a href="http://localhost:4000/courses/intro-to-earth-data-science/write-efficient-python-code/functions-modular-code/"> Chapter 19:   Intro to Functions in Python </a>
+                                </li>
+                            
+                        
+                    </ul>
+
+
+            
+
+            <!-- This is for the activate section in the nav which is grey -->
+
+            
 
     
   </ul></li>
@@ -625,7 +933,7 @@
     <ul>
      
           
-         <li> <a href="http://localhost:8000/courses/intro-to-earth-data-science/">
+         <li> <a href="http://localhost:4000/courses/intro-to-earth-data-science/">
            Intro to Earth Data Science Home </a></li>
          
 
@@ -635,7 +943,7 @@
 </ul>
 </nav>
 
-<h5><a href="http://localhost:8000/courses/intro-to-earth-data-science/" ><i class="fa fa-home" aria-hidden="true"></i> intro-to-earth-data-science Home</a></h5>
+<h5><a href="http://localhost:4000/courses/intro-to-earth-data-science-textbook/" ><i class="fa fa-home" aria-hidden="true"></i> intro-to-earth-data-science-textbook Home</a></h5>
 
     
 
@@ -658,42 +966,57 @@
     <meta itemprop="headline" content="Introduction to Open Reproducible Science Workflows">
     <meta itemprop="description" content="     Section One  ">
     <meta itemprop="datePublished" content="July 01, 2019">
-    <meta itemprop="dateModified" content="August 29, 2019">
+    <meta itemprop="dateModified" content="September 03, 2020">
 
     <div class="page__inner-wrap">
-      
-
         <header>
+          
+
           <!-- BEGIN: insert a welcome to the module block on pages that are part of a module set -->
 
           <!-- END: insert welcome block -->
-          <h1 class="page__title" itemprop="headline">
+
+          
+              
+
             
-             Introduction to Open Reproducible Science Workflows
- </h1>
+                <h1 class="page__title" itemprop="headline">
+                
+                 Introduction to Open Reproducible Science Workflows
+
+                
+                </h1>
             
-          
 
           
 
-        <br/>
-
-        
-
           
+
+            <br/>
+
+            
+
+              
+            
+
+            <!-- For tools pages add authors and tool title -->
+
+            
         </header>
-      
+
+
 
       <section class="page__content" itemprop="text">
+
         <!-- would like to include the TOC automatically but this does weird things-->
         
-        <aside class="sidebar__right">
+          
+            <aside class="sidebar__right">
 <nav class="toc">
     <header><h4 class="nav__title"><i class="fa fa-file-text"></i> Section One</h4></header>
 <ul class="toc__menu" id="markdown-toc">
   <li><a href="#section-one---an-introduction-to-open-reproducible-science-workflows" id="markdown-toc-section-one---an-introduction-to-open-reproducible-science-workflows"><i class="fa fa-ship" aria-hidden="true"></i> Section One - An Introduction to Open Reproducible Science Workflows</a></li>
   <li><a href="#learning-objectives" id="markdown-toc-learning-objectives"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Learning Objectives</a></li>
-  <li><a href="#-table-of-contents" id="markdown-toc--table-of-contents"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Table of Contents</a></li>
 </ul>
 
   </nav>
@@ -720,27 +1043,48 @@
 
 </div>
 
-<h2 id="-table-of-contents"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Table of Contents</h2>
-
+<div>
 <table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Section 1: Open Reproducible Science Workflows</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">Chapter 1: Open Reproducible Science</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Chapter 2: Bash / Shell</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">Chapter 3: Jupyter for Python</td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th>
+                <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/"> Section 1. Introduction to Open Reproducible Science Workflows</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    <!-- list the chapters for each section -->
+    
+        
+        <tr>
+            <td>
+                <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/get-started-open-reproducible-science/">Chapter  1 : Open Reproducible Science Workflows </a>
+            </td>
+        </tr>
+        
+    
+        
+        <tr>
+            <td>
+                <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/bash/">Chapter  2 : Use Bash to Manipulate Files </a>
+            </td>
+        </tr>
+        
+    
+        
+        <tr>
+            <td>
+                <a href="http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/jupyter-python/">Chapter  3 : Jupyter For Python </a>
+            </td>
+        </tr>
+        
+    
+    </tbody>
 </table>
+</div>
 
+
+          
 
         
 
@@ -762,10 +1106,13 @@
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-08-29">August 29, 2019</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-09-03">September 03, 2020</time></p>
         
         <!-- Add license information w/ DOI to the bottom -->
         
+  
+  
+
   
   
 
@@ -801,16 +1148,16 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:8000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/courses/intro-to-earth-data-science/open-reproducible-science/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 <br><br>
   <a href="http://bit.ly/2jc5SXy" target="_blank">
-    <img src="http://localhost:8000/images/earth-data-analytics-professional-certificate-banner.png" alt="Get a professional Certificate in Earth Data Analytics at University of Colorado, Boulder" width="40%"></a>
+    <img src="http://localhost:4000/images/earth-data-analytics-professional-certificate-banner.png" alt="Get a professional Certificate in Earth Data Analytics at University of Colorado, Boulder" width="40%"></a>
 </section>
 
 
@@ -822,7 +1169,149 @@
 
   
   
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/earth-analytics-bootcamp/plot-data-python">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Plot Data With Matplotlib
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  1 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">
+
+     This Week
+
+  
+
+
+</p>
+    </article>
+  </a>
 </div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/summarize-climate-data-by-season/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Calculate Seasonal Summary Values from Climate Data Variables Stored in NetCDF 4 Format: Work With MACA v2 Climate Data in Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  25 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Learn how to calculate seasonal summary values for MACA 2 climate data using xarray and region mask in open source Python.
+</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/subset-netcdf4-climate-data-spatially-aoi/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">Calculate Summary Values Using Spatial Areas of Interest (AOIs) including Shapefiles for Climate Data Variables Stored in NetCDF 4 Format: Work With MACA v2 Climate Data in Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  33 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Climate datasets stored in netcdf 4 format often cover the entire globe or an entire country. Learn how to subset climate data spatially and by time slices u...</p>
+    </article>
+  </a>
+</div>
+
+        
+          
+
+
+
+
+<div class="grid__item">
+  
+    <a href="http://localhost:4000/courses/use-data-open-source-python/hierarchical-data-formats-hdf/use-netcdf-in-python-xarray/">
+  
+    <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      
+      <h2 class="archive__item-title" itemprop="headline">How to Open and Process NetCDF 4 Data Format in Open Source Python
+</h2>
+
+
+     
+      
+        <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  26 minute read
+	
+</p>
+      
+      <p class="archive__item-excerpt" itemprop="description">Historic and projected climate data are most often stored in netcdf 4 format. Learn how to open and process MACA version 2 climate data for the Continental U...</p>
+    </article>
+  </a>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
 
 
     <div class="page__footer">
@@ -841,8 +1330,8 @@
 <div class="page__footer-follow">
   <ul class="social-icons">
     <li>
-      <strong>&copy; 2019 Earth Lab -
-      <a href="http://localhost:8000/license"> All materials on this site
+      <strong>&copy; 2021 Earth Lab -
+      <a href="http://localhost:4000/license"> All materials on this site
         are subject to the CC BY-NC-ND 4.0 License. </a>
       </strong>
     </li>
@@ -859,7 +1348,7 @@
       <li><a href="http://github.com/earthlab"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     
     
-    <li><a href="http://localhost:8000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
@@ -870,7 +1359,7 @@
       </footer>
     </div>
 
-    <script src="http://localhost:8000/assets/js/main.min.js"></script>
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
 
 
 
