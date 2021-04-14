@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/205400714.svg)](https://zenodo.org/badge/latestdoi/205400714)
+[![DOI](https://zenodo.org/badge/205400714.svg)](https://doi.org/10.5281/zenodo.3382162)
 
 # Earth Analytics - Intro to Earth Data Science Textbook Materials
 
