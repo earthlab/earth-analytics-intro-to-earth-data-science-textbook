@@ -59,22 +59,4 @@ The Introductory Earth Data Science Textbook is designed for an audience with no
 # Acknowledgements
 We acknowledge contributions from many who have contributed to our textbook via edits and content suggestions and updates. These people include students in the Earth Data Analytics program who catch issues with the lessons, Martha Morrisey and Will Norris and others for work and feedback on some of the lessons. We also acknowledge Joseph Tucillo and Gina Li for contributing to our lesson development CI build and workflow. We would also like to acknowledge our textbook reviewers <!insert names here> for providing us with helpful feedback that improved the lesson content.
 
-****
-
-XXXXXX
-A scientist that can problem solve by associating concepts with problems rather than learning programming "steps" will be more empowered to use different types of data and approaches and thus b build upon their technical skills over time.
-
-While most scientists do not begin their careers with the goal of becoming data scientists, data science skills are becoming increasingly more integral to science given the growing complexity and size of available data. Skills at the intersection of data and earth and environmental science are in demand in the job market currently, yet these skills are not equally available to everyone yielding a workforce shortage [@barone:2017].
-
-
-The textbook is the first in a progression of two and is published on the [earthdatascience.org learning portal](https://www.earthdatascience.org/courses/intro-to-earth-data-science/) which currently receives over 200,000 unique global users a month and has served millions of unique global users since 2018. Students can follow along with our Bootcamp course assignments using the online Earth Analytics Bootcamp course [@FIX CITATION]. Instructors can repurpose and use lessons in their courses to support building increased and diverse capacity to teach EDS skills.
-
-Both textbooks were developed to support the Earth Data Analytics Program lead by the Earth Analytics Education Initiative at Earth Lab, University of Colorado - Boulder. Earth Lab is also a part of CIRES.
-
-Most lessons also use a package called earthpy <ADD CITATION> which was also developed at Earth Lab. The EarthPy package is a Free and Open  Source (FOSS) software package that both facilitates consistent data download of associated teaching data subsets needed to complete textbook activities to a users home directory, while also simplifying spatial data operations.
-
-This environment is hosted on GitHub and tested via continuous integration to ensure it is up to date on all operating systems (Windows, Apple, Linux). Instructions for setting up the environment can be found in our setup module hosted on earthdatascience.org [@wasser_leah_2021_5228300].
-
-Lessons can also be completed by installing our earth analytics Python environment [@leah_wasser_2021_4657501] on a local computer.
-
 # References
