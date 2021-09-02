@@ -34,5 +34,7 @@
     "earth data science",
     "earth analytics"
   ],
-  "license": "CC-BY-NC-ND-4.0"
+  "license": "CC-BY-NC-ND-4.0",
+  "upload_type": "publication",
+  "pubication_type": "book"
 }
